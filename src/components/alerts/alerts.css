@@ -1,0 +1,43 @@
+.position{
+    top:30%;
+    right:-200%;
+    position:fixed;
+    transition:all .2s linear;
+    margin:1vmin;
+    z-index:900;
+}
+
+.Alerta,.AlertaRoja{
+    width: 180px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 15px 7.5px;
+    transition:all 1s linear;
+    z-index: 900;
+    
+}
+.Alerta>p,.AlertaRoja>p{
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.3;
+}
+.Alerta>p>span,.AlertaRoja>p>span{
+    line-height: 30px;
+    text-align: center;
+}
+.Alerta{
+    background-color: #b5e0f7;
+    border-left: 3px  solid rgba(11, 80, 106, 0.88);
+}
+.Alerta>p{
+    color: rgb(16, 108, 160);
+}
+.AlertaRoja{
+    background-color: rgb(206, 97, 97);
+    border-left: 3px  solid rgb(224, 69, 69); 
+    color: white;
+}
+.AlertaRoja>p,.AlertaRoja>p>span{
+    color: rgb(255, 255, 255);
+}

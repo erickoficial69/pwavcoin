@@ -1,0 +1,99 @@
+/*-------------------------------------------
+-----------   TABLA GRID Mensajes   ---------
+---------------------------------------------*/
+.tableM {
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 2px 2px #eaeaea;
+    border-radius: 10px 10px 0 0;
+   position: relative;
+   width: 500px;
+}
+    
+
+.theadM {
+    background-color: var(--theme-color);
+}
+.theadM>h2 {
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.theadM,
+.tdM {
+    padding: 0.5em;
+    text-align: center;
+}
+.trM{
+    display: grid;
+    grid-template-columns: 28% 52% 1fr 1fr;
+    grid-auto-rows: 40px auto;
+    align-items: center;
+    background-color: #fcfcfc;
+    
+}
+.trM>img{
+    height: 25px;
+    width: 25px;
+    margin: 0 auto;
+    cursor: pointer;
+    z-index: 100;
+}
+.tdSubM{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start:2;
+    height: 0px;
+    opacity: 1;
+    border-bottom: 1px solid #dedede;
+    border-top: 1px solid #dedede;
+    transition: all 0.5s;
+}
+.tdSubM>article{
+    opacity: 0;
+    height: 0px;
+   background-color: white;
+    transition: all 0.5s;
+    border-bottom: 1px solid #dedede;
+    border-top: 1px solid #dedede;            
+}
+.tdSubM>article>p{
+    line-height: 1.5;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+.tdSubM>article>p::before{
+content: open-quote;
+
+}
+.tdSubM>article>p::after{
+content: close-quote;
+}
+.FirmaM{
+    margin-right: 55%;
+    padding-left: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+ .detallesM~.tdSubM{
+    height: 160px;
+}
+ .detallesM~.tdSubM>article{
+    height: 160px;
+    opacity: 1;
+}
+@media only screen and (max-width:550px) {
+.tableM {
+    
+   width: 90%;
+}
+.detallesM+.tdSubM{
+    height: auto;
+}
+.detallesM+.tdSubM>article{
+    height: auto;
+}
+
+}

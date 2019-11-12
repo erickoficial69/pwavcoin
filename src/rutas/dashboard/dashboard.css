@@ -1,0 +1,388 @@
+.container{
+    width:80%;
+    margin-top:0;
+    margin-left:20%;
+    padding:1vmin;
+    overflow-x:hidden;
+}
+.btnsTabla{
+    width:95%;
+    padding: 10px 0;
+    text-align: right;
+}
+.btnsTabla>button{
+    margin:0 5px;
+    width:150px;
+}
+@media(max-width:1024px){
+    .container{
+        width:70% ;
+        margin-left:30%;
+    }
+}
+@media(max-width:720px){
+    .container{
+        width:100% ;
+        height:auto;
+        margin-top:80px;
+        margin-left:0;
+    }
+}
+
+
+.Monedas {
+    width: 90%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto 30px;
+}
+
+.Monedas > article {
+    background-color: var(--theme-color);
+    padding: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.Monedas > article > img {
+    width: 50%;
+    padding: 5px 0;
+}
+
+.Monedas > article > h3 {
+    color: white;
+    line-height: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+.Monedas > form {
+    background-color: var(--theme-color);
+    padding: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.Monedas > form > img {
+    width: 50%;
+    padding: 5px 0;
+}
+
+.Monedas > form > h3 {
+    color: white;
+    line-height: 1;
+    text-align: center;
+    font-size: 15px;
+}
+@media only screen and (max-width:1024px){
+    .Monedas{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media only screen and (max-width:720px){
+    .Monedas{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/*-------------------------------------------
+-------------   TABLA GRID ------------------
+---------------------------------------------*/
+.table {
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 2px 2px #eaeaea;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+   width: 90%;
+}
+    
+
+.thead {
+    display: grid;
+    grid-template-columns: 10% 15% 20% 30% 25%;
+    font-size: 100%;
+    background-color:var(--theme-color);
+    color: white;
+    overflow: hidden;
+}
+
+.thead>h2 {
+    color: white;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.thead,
+.td {
+    padding: 0.5em;
+    text-align: center;
+    font-size: 14px;
+}
+span,.tr>p{
+    font-size: 14px;
+}
+.tr{
+    display: grid;
+    grid-template-columns: 10% 15% 20% 30% 13% 4% 4% 4%;
+    grid-auto-rows: 40px auto;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    z-index:80;
+    overflow: hidden;
+    animation: entradatr 0.3s ease;
+}
+@keyframes entradatr{
+    0%{
+        height: 0px;
+        opacity: 0;
+    }
+    100%{
+        height: 50px;
+        opacity: 1;
+    }
+}
+.tr>img{
+    height: 20px;
+    cursor: pointer;
+}
+.tr>a>img{
+    height: 20px;
+    cursor: pointer;
+}
+.NombreDestino{
+    padding-left: 10px;;
+}
+.tdSub{
+    grid-column-start: 1;
+    grid-column-end: 9;
+    grid-row-start:2;
+    height: 0px;
+    opacity: 1;
+    transition: all 0.5s;
+    
+}
+.tdSub>article{
+    opacity: 0;
+    height: 0px;
+    transition: all 1s;
+    background-color: #fff;
+    width:100%;  
+    display:none;          
+}
+ .detalles+.tdSub{
+     height:500px;
+    width:100%;
+}
+ .detalles+.tdSub>article{
+    height: 500px;
+    opacity: 1;
+    display: block;
+}
+
+.tbody>.tr:nth-of-type(2n) {
+    border-bottom: 2px solid #dddddd;
+    border-top: 2px solid #dddddd;
+}
+
+@media only screen and (max-width:1024px) {
+    .table{
+        width: 97%;
+    }
+
+    .thead{
+        grid-template-columns: 20% 20% 30% 30%;
+    }
+    .td{
+        padding: 0;
+    }
+    .tr{
+        grid-template-columns:20% 20% 30% 7% 7% 7%  ;
+        grid-column-gap: 1%;
+       
+    }
+
+    .IDth,
+    .IDtr,
+    .status{
+        display: none;
+    }
+    .tr>img{
+        height: 30px;
+        cursor: pointer;
+    }
+    .tr>a>img{
+        height: 30px;
+        cursor: pointer;
+    }
+}
+@media only screen and (max-width:720px){
+
+    .Fechath,
+    .Fechatd{
+        display: none;
+    }
+    .thead{
+        grid-template-columns: 33% 33% 33%;
+    }
+    .tr{
+        grid-template-columns:30% 30% 11% 11% 11%  ;
+        grid-column-gap: 1%;
+       
+    }
+}
+/*-------------------------------------------
+-------------   Detalles table ------------------
+---------------------------------------------*/
+.DetallesTabla{
+    position: relative;
+}
+
+.DetallesTabla>div{
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.DetallesTabla>div>img{
+    padding-right: 15px;
+    height: 60px;
+}
+.DetallesTabla>div>span{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+.DetallesTabla>div>span>h3{
+    color: var(--theme-color);
+}
+.DatosDetalles{
+    display: grid;
+    grid-template-columns: 1fr 25px 1fr;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+.DatosDetalles>img{
+    height:30px;
+    transform: rotate(90deg);
+}
+.DatosDetalles>div{
+    background-color: #e1f5fc;
+    margin: 10px 20px;
+    padding: 20px;
+    height: 90%;
+    border-radius: 10px;
+    
+}
+.DatosDetalles>div>h2{
+    color: var(--theme-color);
+    text-transform: uppercase;
+    line-height: 2;
+    font-size: 16px;
+    margin-top: -15px;
+}
+.DatosDetalles>div>p>span{
+    font-weight: bold;
+    color: var(--theme-color);
+    
+}
+.DatosDetalles>div>p{
+    text-align: left;
+    margin: 0 3%;
+    font-size: 16px;
+    color: #767676;
+    line-height: 1.4;
+    text-transform: capitalize;
+}
+.DatosDetalles>span{
+    width: 90%;
+    margin: 0 auto;
+}
+.DatosDetalles>span>p{
+    text-align: left;
+    border-bottom: 1px solid #5f8e44;
+    line-height: 2;
+    font-size: 13px;
+    text-transform: capitalize;;
+    position: relative;
+}
+.DatosDetalles>span>p>span{
+    font-weight: bold;
+    position: absolute;
+    right: 3%;
+    color: #5f8e44;
+}
+.TotalDestino{
+    font-size: 16px;
+    line-height: 1.8;
+}
+.Botones{
+    display: flex !important; 
+    flex-flow: row !important;
+    justify-content: flex-end !important;
+    text-align: right;
+}
+.Botones>p{
+    font-size: 14px;
+    width: 90px;
+    text-align: center;
+    color: white;
+    margin: 1% 10px 0 0;
+    cursor: pointer;
+}
+@media only screen and (max-width:720px){
+    .detalles+.tdSub{
+        height:auto;
+   }
+    .detalles+.tdSub>article{
+       height: auto;
+       padding-bottom: 15px;
+   }
+    .DatosDetalles{
+        display: flex;
+        flex-flow: column;
+    }
+    .DatosDetalles>img{
+        height:30px;
+        transform: rotate(180deg);
+    }
+    .DatosDetalles>span>p{
+        line-height: 3;
+    }
+    .DatosDetalles>span>p>span{
+        line-height: 3;
+    }
+    .DatosDetalles>span>p:nth-child(4){
+        display: none;
+    }
+    .Botones>p{
+        margin-top: 10px;
+    }
+}
+
+/*-------------------------------------------
+-------------   Buscador ------------------
+---------------------------------------------*/
+
+.Buscador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2% 5%;
+}
+.Buscador>input{
+    background-color: white;
+}
+.Buscador>a{
+    width: 5%;  
+}
+.Buscador>a>img{
+    height: 30px;
+    margin: 7px 7px 0;
+}

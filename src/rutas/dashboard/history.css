@@ -1,0 +1,99 @@
+.pedidos{
+    display:flex;
+    flex-flow:column;
+    justify-content: center;
+    width:95%;
+    position: relative;
+    margin:0 auto;
+    border-radius: 2vmin;
+    border: 1px solid rgba(0,0,0,.2);
+    overflow: hidden;
+}
+.headerPedidos, .rowPedidos,.dataPedidos{
+    width: 100%;
+    display: flex;
+}
+.headerPedidos{
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    background:var(--active);
+    border-radius: 1vmin 1vmin 0 0;
+}
+.dataPedidos{
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    background-color: rgb(255, 255, 255);
+}
+.headerPedidos > h2:first-child{
+    display:none;
+    width:8% !important;
+}
+.dataPedidos > p:first-child{
+    display:none;
+    width:8% !important;
+}
+.headerPedidos > h2:nth-child(3){
+    width:50% !important;
+    display: none;
+}
+.dataPedidos > p:nth-child(2){
+text-align: left;
+}
+.dataPedidos > p:nth-child(3){
+    width:50% !important;
+    display: none;
+}
+.headerPedidos > h2:last-child{
+    width:50% !important;
+}
+.dataPedidos > p:last-child{
+    width:50% !important;
+}
+.headerPedidos > h2{
+    text-align: left;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    width:100%;
+    text-transform: capitalize;
+    overflow:hidden;
+    padding: 1vmin;
+    color:var(--background-color);
+}
+.dataPedidos > p{
+    text-align: center;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    width:100%;
+    overflow:hidden;
+    padding: 1.5vmin;
+}
+.dataPedidos > p > strong{
+    text-transform: uppercase;
+}
+.rowPedidos{
+    flex-flow: column-reverse;
+}
+.dataPedidos:nth-child(2n){
+    background:rgb(242, 242, 242);
+}
+@media(min-width:720px){
+    
+.headerPedidos > h2:first-child{
+    display:block;
+}
+.dataPedidos > p:first-child{
+    display:block;
+}
+.headerPedidos > h2{
+    width:60%;
+}
+.dataPedidos > p{
+    width:60%;
+}
+.headerPedidos > h2:nth-child(3){
+    width:40% !important;
+    display: block;
+}
+.dataPedidos > p:nth-child(3){
+    width:40% !important;
+    display: block;
+}
+}

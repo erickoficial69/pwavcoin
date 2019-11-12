@@ -1,0 +1,85 @@
+
+.headerUser{
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+    grid-gap: 1vmin;
+    grid-template-columns:25% 37.5% 37.5%;
+    border-radius:2vmin;
+    border:2px solid rgba(128, 128, 128, 0.11);
+    padding:1vmin 2vmin;
+}
+.Foto{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.Foto>img{
+    border-radius:50%;
+    height: 120px;
+    width: 120px;
+    border:1px solid var(--active);
+}
+.DatosPersonales,.DatosPlataforma{
+    display: flex;
+    align-items: center;
+}
+.DatosPersonales>span,.DatosPlataforma>span{
+    width: 100%;
+}
+.DatosPersonales>span>p,.DatosPlataforma>span>p{
+    padding-left: 15px;
+}
+.DatosPersonales{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.DatosPlataforma{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.userActions{
+    margin: 10px auto;
+    width: 90%;
+    display: grid;
+    grid-gap: 1vmin;
+    grid-template-columns: repeat(4,1fr);
+}
+
+@media(max-width:920px){
+    .userActions{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .headerUser{
+        display: grid;
+        width: 95%;
+        grid-gap: 1vmin;
+        grid-template-columns:50% 0% 50%;
+    }
+    .Foto{
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+    .DatosPersonales{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+    .DatosPlataforma{
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+}
+@media (max-width:720px){
+    .headerUser{
+        grid-template-columns:repeat(1,1fr);
+    }
+    .Foto,.DatosPersonales,.DatosPlataforma{
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+    .Foto,.DatosPersonales{
+        border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    }
+}

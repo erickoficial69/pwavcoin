@@ -1,0 +1,281 @@
+@font-face{
+  font-family: 'roboto';
+  src: url('./components/roboto_r.eot');
+}
+html{
+  scroll-behavior: smooth;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border:none;
+  font-family: 'roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all .5s linear;
+  word-wrap:break-word !important;
+  font-size: var(--font-size);
+  color:var(--font-color);
+}
+:root{
+  --font-size:16px;
+  --hHeader:10vh;
+  --padTemp:2vmin;
+  --theme-color:rgb(16, 108, 160);
+  --background-color:rgb(255, 255, 255);
+  --font-color:rgb(122, 122, 122);
+  --active:rgb(16, 108, 160);
+  --activeHover:rgb(11, 123, 186);
+  --activeClick:rgb(17, 146, 219);
+  --submit:rgb(97, 206, 112);
+  --submitHover:rgb(68, 201, 85);
+  --submitClick:rgb(53, 170, 68);
+  --cancel:rgb(255, 17, 0);
+  --cancelHover:rgb(255, 94, 0);
+  --cancelClick:rgb(255, 17, 0);
+}
+body,.scroll{
+  padding-bottom:5vmin;
+}
+.scroll::-webkit-scrollbar{
+  background:transparent;
+  width:5px;
+}
+.scroll::-webkit-scrollbar-thumb{
+  background:var(--submitHover);
+}
+
+body::-webkit-scrollbar{
+  background:transparent;
+  width:5px;
+}
+body::-webkit-scrollbar-thumb{
+  background:var(--submitHover);
+}
+@media(min-width:280px){
+  :root{
+    --hHeader:10vh;
+    --padTemp:2vmin;
+  }
+  .scroll{
+    padding-bottom:0vmin;
+  }
+}
+@media(min-width:700px){
+  :root{
+    --hHeader:13vh;
+    --padTemp:14px;
+  }
+}
+
+@media(min-width:1024px){
+  :root{
+    --hHeader:13vh;
+    --padTemp:11px;
+  }
+  .scroll{
+    padding-bottom:3vmin;
+  }
+}
+.btnGreen,.btnBlue,.btnRed{
+  line-height: 2;
+  padding: 0 2vmin;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: capitalize;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.1s;
+  border-bottom: 2px solid rgba(255,255,255,0);
+}
+.btnGreen:hover,.btnBlue:hover,.btnRed:hover{
+  border-bottom: 2px solid grey;
+}
+.btnGreen{
+  background-color: var(--submit);
+}
+.btnGreen:hover{
+  background-color: var(--submitHover);
+}
+.btnGreen:active{
+  background-color: var(--submitClick);
+}
+.btnBlue{
+  background-color: var(--active);
+}
+.btnBlue:hover{
+  background-color: var(--activeHover);
+}
+.btnBlue:active{
+  background-color: var(--activeClick);
+}
+
+.btnRed{
+  background-color: var(--cancel);
+}
+.btnRed:hover{
+  background-color: var(--cancelHover);
+}
+.btnRed:active{
+  background-color: var(--cancelClick);
+}
+body {
+  background-color: #f9f9f9;
+}
+
+/*------------------------------------------------  
+
+             estilos generales y clases de tema
+
+--------------------------------------------------*/
+h1,
+h2,
+h3,
+h4 {
+  color: rgb(16, 108, 160);
+  font-weight: bold;
+  line-height: 2;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+p > span {
+  font-weight: bolder;
+  line-height: 2;
+  color: #106ca0;
+  text-transform: uppercase;
+  word-wrap:break-word !important;
+}
+
+
+.Cartas {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid #eaeaea;
+  padding: 15px;
+  box-shadow: 2px 2px 1px #eaeaea;
+}
+        .BtnDescarga{
+          margin: 10px 5px;
+          height: 30px;
+          background-color: #fff;
+          cursor: pointer;
+      }
+
+      .BtnDescarga > label {
+          display: block;
+          font-size: 12px;
+          font-weight: normal;
+      }
+      .BtnDescarga > img {
+          height: 90%
+      }
+      .BtnCerrar,.BtnCerrar1{
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        background-color: rgb(224, 69, 69);
+        border-radius: 50%;
+        top: -7.5px;
+        z-index: 100;
+        transition: all 0.3s;
+        right: -7.5px;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+    }
+    .BtnCerrar1{
+      opacity: 1;
+    }
+    .BtnCerrar{
+      opacity: 0;
+    }
+    article:hover>.BtnCerrar, form:hover>.BtnCerrar{
+        opacity: 1;
+    }
+    .BtnCerrar>img,.BtnCerrar1>img{
+        height: 40%;
+    }
+    @media(max-width:900px){
+      .BtnCerrar{
+        opacity: 1;
+      }
+    }
+    .BTN{
+      height: 40px;
+      padding: 0 30px;
+      margin: 0;
+      text-align: center;
+  }
+  .CampoFormulario{
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+  }
+  .CampoFormulario>label{
+      line-height: 1.5;
+      font-size: 16px;;
+  }   
+  input,select,textarea{
+    padding-left: 10px;
+    border: 1px solid #eaeaea;
+    background-color: #f9f9f9;
+    color: #666;
+    border-radius: 5px;
+  height: 40px;
+  font-size: 14px;;
+  margin: 10px 0px;
+  }
+  .CampoFormulario>textarea{
+    height: 200px;
+  }
+  .CampoFormulario>input,
+  .CampoFormulario>select,.CampoFormulario>textarea{
+  text-align: left;
+  width: 100%;
+  line-height: 1;
+}
+.Requerido::after{
+  content: " *";
+  color: #eb6565;
+  font-size: 14px;
+}
+/*--------------------------------
+
+        formularios movil
+
+---------------------------------*/
+@media(max-width:520px){
+  .SinUp>form,.Login>form,.formPedidos{
+      display: flex;
+      flex-flow: column;
+      box-sizing: border-box;
+  }
+  .Entrar,.ConfirmarOrden,form,.VerificarOrden{
+      width: 90% !important;
+      margin: 0 auto;
+  }
+  .Cambio~.SinUp{
+      height: auto;
+  }
+  .BtnLogin,.BtnSinUp{
+      font-size: 18px;
+  }
+}

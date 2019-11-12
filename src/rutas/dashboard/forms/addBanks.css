@@ -1,0 +1,55 @@
+/*--------------------
+
+agregar cuentas bancarias
+
+---------------------------------*/
+
+.AgregarBanco{
+    margin: 0 auto;
+    width: 660px;
+    border: 2px solid #eaeaea;
+    box-shadow: 2px 2px 1px #eaeaea;
+    text-align: right;
+    position: relative;
+    box-sizing: border-box;
+}
+.AgregarBancoForm{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns:repeat(6,100px) ;
+}
+.AgregarBancoForm>div:nth-child(1){
+    grid-column: 1 / span 3;
+}
+.AgregarBancoForm>div:nth-child(2){
+    grid-column: auto / span 3;
+}
+.AgregarBancoForm>div:nth-child(3){
+    grid-column: auto / span 3;
+}
+.AgregarBancoForm>div:nth-child(4){
+    grid-column: auto / span 3;
+}
+.AgregarBancoForm>div:nth-child(5){
+    grid-column: auto / span 2;
+}
+.AgregarBancoForm>div:nth-child(6){
+    grid-column: auto / span 1;
+}
+.AgregarBancoForm>div:nth-child(7){
+    grid-column: auto / span 3;
+}
+.AgregarBancoForm>button,.AgregarBancoForm>p{
+    grid-column: 5 / span 2;
+}
+@media(max-width:600px){
+    .AgregarBancoForm{
+        display: flex;
+        flex-flow: column;;
+    }
+    .AgregarBanco{
+        margin: 0 auto;
+        width: 90%;
+    }
+
+}

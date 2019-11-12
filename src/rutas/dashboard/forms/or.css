@@ -1,0 +1,10 @@
+.VerificarOrden{
+    margin: 0 auto;
+    width: 500px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #eaeaea;
+    box-shadow: 2px 2px 1px #eaeaea;
+    text-align: right;
+    background-color: white;
+}

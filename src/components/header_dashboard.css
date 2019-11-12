@@ -1,0 +1,216 @@
+        aside {
+            position: fixed;
+            left: 0;
+            width: 20%;
+            height: 100%;
+            top: 0;
+            z-index: 200;
+        }
+  
+        /*------------------------------------------------  
+
+                        reset y variables
+
+        --------------------------------------------------*/
+
+        /*-------   aside   -----------*/
+
+        aside {
+            background-image: url(../components/images/fondo-logo.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(16, 108, 160, 0.34);
+            background-blend-mode: hue;
+        }
+
+        aside > div {
+            background-color: rgba(64, 84, 178, 0.67);
+            text-align: center;
+            position: relative;
+        }
+        .MensajesIcono{
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            height: 35px;
+            width: 30px;
+            background-image: url(../svg/mensaje.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 30px;
+        }
+        
+        .notiM::after{
+            content: attr(count);
+            background-color: rgb(216, 67, 67);
+            width: 14px;
+            position: absolute;
+            color: white;
+            font-size: 10px;
+            padding: 3px;
+            height: 14px;
+            border-radius: 50%;
+        }
+        aside > div > img {
+            width: 120px;
+            height: 120px;
+            margin: 20px 0 10px;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        aside > div > div >h3,
+        aside > div > div >p,
+        aside > a {
+            color: white;
+            font-weight: bolder;
+        }
+
+        aside > div > div > h3 {
+            line-height: 2;
+            background-color: rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            text-align: center;
+        }
+
+        aside > div > div > p {
+            line-height: 1;
+            font-size: 12px;
+            padding: 7px 0 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        aside > a {
+            display: block;
+            font-size: 16px !important;
+            line-height: 2;
+            text-align: left;
+            padding: 0 0 0 20px;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.1s;
+            border-top: 2px solid rgba(255, 255, 255, 0.0);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.0);
+        }
+
+        aside > a:nth-child(2) {
+            display: none;
+        }
+
+        aside > a:hover {
+            padding-left: 40px;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        aside > a:hover::before {
+            content: "•   ";
+        }
+        aside>span{
+            display:none;
+        }
+
+        @media all and (max-width:1024px) {
+
+            /*-------   estructura   -----------*/
+
+            aside {
+                width: 30%;
+                overflow-y:auto;
+            }
+        }
+
+        @media (max-width:720px) {
+
+            /*-------   estructura   -----------*/
+            /*-------   Menu   -----------*/
+            aside {
+                transition: all 0.3s;
+                overflow: hidden;
+                width: 100%;
+                position: fixed;
+                left:0;
+                top:0;
+            }
+            aside > div{
+                height: 75px;
+                display: grid;
+                grid-template-columns: 60px auto 60px;
+                grid-column-gap: 20px;
+               
+            }
+            .MensajesIcono{
+                
+                top: 15px;
+                right: 25%;
+            }
+            aside > div > img{
+                width: 60px;
+                height: 60px;
+                border: 2px solid white;
+                margin: 5px;
+            }
+            aside>div>div{
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+            }
+            aside > div > div > p,aside > div > div > h3{
+                text-align: left;
+                line-height: 1.3;
+            }
+            aside > div > div > h3{
+                font-size: 15px;
+                background-color: transparent;
+            }
+            aside > div > div > p{
+                padding: 5px 0 0;
+                border: none;
+            }
+            aside {
+                height: 75px;
+            }
+            aside > a {
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
+            .MenuIco{
+                color:transparent;
+                position: absolute;
+                right:0;
+                background-color: rgba(0, 0, 0, 0.5);
+                font-size: 20px;
+                width: 80px;
+                height: 70px;
+                font-weight: bold;
+                top:0;
+                cursor:pointer;
+                display:block;
+              }
+              .MenuIco::before {
+                content: "";
+                position: absolute;
+                opacity: 1;
+                width: 60px;
+                top: 20px;
+                right: 10px;
+                border-radius: 5px;
+                z-index: 100;
+                box-shadow: 0px 15px white;
+                height: 5px;
+                background-color: white;
+              }
+              .MenuIco::after{
+                content: "";
+                position: absolute;
+                width: 60px;
+                top: 50px;
+                z-index: 100;
+                height: 5px;
+                background-color: white;
+                right: 10px;
+              }    
+        }
+
+        .message{
+            width: 300px;
+        }

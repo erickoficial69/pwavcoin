@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://stacksnippets.net/js -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        
+    </style>
+    <script src="./snippet-javascript-console.min.js.descarga"></script><style type="text/css">.as-console-wrapper { position: fixed; bottom: 0; left: 0; right: 0; max-height: 150px; overflow-y: scroll; overflow-x: hidden; border-top: 1px solid #000; display: none; }
+.as-console { background: #e9e9e9; border: 1px solid #ccc; display: table; width: 100%; border-collapse: collapse; }
+.as-console-row { display: table-row; font-family: monospace; font-size: 13px; }
+.as-console-row:after { display: table-cell; padding: 3px 6px; color: rgba(0,0,0,.35); border: 1px solid #ccc; content: attr(data-date); vertical-align: top; }
+.as-console-row + .as-console-row > * { border: 1px solid #ccc; }
+.as-console-row-code { width: 100%; white-space: pre-wrap; padding: 3px 5px; display: table-cell; font-family: monospace; font-size: 13px; vertical-align: middle; }
+.as-console-error:before { content: 'Error: '; color: #f00; }
+.as-console-assert:before { content: 'Assertion failed: '; color: #f00; }
+.as-console-info:before { content: 'Info: '; color: #00f; }
+.as-console-warning:before { content: 'Warning: '; color: #e90 }
+@-webkit-keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+@-moz-keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+@-ms-keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+@keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+.as-console-row-code, .as-console-row:after { -webkit-animation: flash 1s; -moz-animation: flash 1s; -ms-animation: flash 1s; animation: flash 1s; }</style>
+    <script src="./babel.min.js.descarga"></script>
+<script>'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// download html2canvas and jsPDF and save the files in app/ext, or somewhere else
+// the built versions are directly consumable
+// import {html2canvas, jsPDF} from 'app/ext';
+
+var Export = function (_Component) {
+  _inherits(Export, _Component);
+
+  function Export(props) {
+    _classCallCheck(this, Export);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Export).call(this, props));
+  }
+
+  _createClass(Export, [{
+    key: 'printDocument',
+    value: function printDocument() {
+      var input = document.getElementById('divToPrint');
+      html2canvas(input).then(function (canvas) {
+        var imgData = canvas.toDataURL('image/png');
+        var pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("download.pdf");
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'mb5' },
+          _react2.default.createElement(
+            'button',
+            { onClick: this.printDocument },
+            'Print'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          _extends({ id: 'divToPrint', className: 'mt4' }, css({
+            backgroundColor: '#f5f5f5',
+            width: '210mm',
+            minHeight: '297mm',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          })),
+          _react2.default.createElement(
+            'div',
+            null,
+            'Note: Here the dimensions of div are same as A4'
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            'You Can add any component here'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Export;
+}(_react.Component);
+
+exports.default = Export;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIklubGluZSBCYWJlbCBzY3JpcHQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUNROzs7Ozs7Ozs7Ozs7Ozs7O0lBT2EsTTs7O0FBQ25CLGtCQUFZLEtBQVosRUFBbUI7QUFBQTs7QUFBQSxxRkFDWCxLQURXO0FBRWxCOzs7O29DQUVlO0FBQ2QsVUFBTSxRQUFRLFNBQVMsY0FBVCxDQUF3QixZQUF4QixDQUFkO0FBQ0Esa0JBQVksS0FBWixFQUNHLElBREgsQ0FDUSxVQUFDLE1BQUQsRUFBWTtBQUNoQixZQUFNLFVBQVUsT0FBTyxTQUFQLENBQWlCLFdBQWpCLENBQWhCO0FBQ0EsWUFBTSxNQUFNLElBQUksS0FBSixFQUFaO0FBQ0EsWUFBSSxRQUFKLENBQWEsT0FBYixFQUFzQixNQUF0QixFQUE4QixDQUE5QixFQUFpQyxDQUFqQzs7QUFFQSxZQUFJLElBQUosQ0FBUyxjQUFUO0FBQ0QsT0FQSDtBQVNEOzs7NkJBRVE7QUFDUCxhQUFRO0FBQUE7QUFBQTtBQUNOO0FBQUE7QUFBQSxZQUFLLFdBQVUsS0FBZjtBQUNFO0FBQUE7QUFBQSxjQUFRLFNBQVMsS0FBSyxhQUF0QjtBQUFBO0FBQUE7QUFERixTQURNO0FBSU47QUFBQTtBQUFBLHFCQUFLLElBQUcsWUFBUixFQUFxQixXQUFVLEtBQS9CLElBQXlDLElBQUk7QUFDM0MsNkJBQWlCLFNBRDBCO0FBRTNDLG1CQUFPLE9BRm9DO0FBRzNDLHVCQUFXLE9BSGdDO0FBSTNDLHdCQUFZLE1BSitCO0FBSzNDLHlCQUFhO0FBTDhCLFdBQUosQ0FBekM7QUFPRTtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBUEY7QUFRRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBUkY7QUFKTSxPQUFSO0FBZUQ7Ozs7OztrQkFsQ2tCLE0iLCJmaWxlIjoiSW5saW5lIEJhYmVsIHNjcmlwdCIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgICAgICBpbXBvcnQgUmVhY3QsIHtDb21wb25lbnQsIFByb3BUeXBlc30gZnJvbSAncmVhY3QnO1xuXG4vLyBkb3dubG9hZCBodG1sMmNhbnZhcyBhbmQganNQREYgYW5kIHNhdmUgdGhlIGZpbGVzIGluIGFwcC9leHQsIG9yIHNvbWV3aGVyZSBlbHNlXG4vLyB0aGUgYnVpbHQgdmVyc2lvbnMgYXJlIGRpcmVjdGx5IGNvbnN1bWFibGVcbi8vIGltcG9ydCB7aHRtbDJjYW52YXMsIGpzUERGfSBmcm9tICdhcHAvZXh0JztcblxuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBFeHBvcnQgZXh0ZW5kcyBDb21wb25lbnQge1xuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xuICAgIHN1cGVyKHByb3BzKTtcbiAgfVxuXG4gIHByaW50RG9jdW1lbnQoKSB7XG4gICAgY29uc3QgaW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnZGl2VG9QcmludCcpO1xuICAgIGh0bWwyY2FudmFzKGlucHV0KVxuICAgICAgLnRoZW4oKGNhbnZhcykgPT4ge1xuICAgICAgICBjb25zdCBpbWdEYXRhID0gY2FudmFzLnRvRGF0YVVSTCgnaW1hZ2UvcG5nJyk7XG4gICAgICAgIGNvbnN0IHBkZiA9IG5ldyBqc1BERigpO1xuICAgICAgICBwZGYuYWRkSW1hZ2UoaW1nRGF0YSwgJ0pQRUcnLCAwLCAwKTtcbiAgICAgICAgLy8gcGRmLm91dHB1dCgnZGF0YXVybG5ld3dpbmRvdycpO1xuICAgICAgICBwZGYuc2F2ZShcImRvd25sb2FkLnBkZlwiKTtcbiAgICAgIH0pXG4gICAgO1xuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoPGRpdj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwibWI1XCI+XG4gICAgICAgIDxidXR0b24gb25DbGljaz17dGhpcy5wcmludERvY3VtZW50fT5QcmludDwvYnV0dG9uPlxuICAgICAgPC9kaXY+XG4gICAgICA8ZGl2IGlkPVwiZGl2VG9QcmludFwiIGNsYXNzTmFtZT1cIm10NFwiIHsuLi5jc3Moe1xuICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZjVmNWY1JyxcbiAgICAgICAgd2lkdGg6ICcyMTBtbScsXG4gICAgICAgIG1pbkhlaWdodDogJzI5N21tJyxcbiAgICAgICAgbWFyZ2luTGVmdDogJ2F1dG8nLFxuICAgICAgICBtYXJnaW5SaWdodDogJ2F1dG8nXG4gICAgICB9KX0+XG4gICAgICAgIDxkaXY+Tm90ZTogSGVyZSB0aGUgZGltZW5zaW9ucyBvZiBkaXYgYXJlIHNhbWUgYXMgQTQ8L2Rpdj4gXG4gICAgICAgIDxkaXY+WW91IENhbiBhZGQgYW55IGNvbXBvbmVudCBoZXJlPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj4pO1xuICB9XG59XG4gICAgIl19</script></head>
+<body>
+    
+    <script type="text/babel">
+        import React, {Component, PropTypes} from 'react';
+
+// download html2canvas and jsPDF and save the files in app/ext, or somewhere else
+// the built versions are directly consumable
+// import {html2canvas, jsPDF} from 'app/ext';
+
+
+export default class Export extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  printDocument() {
+    const input = document.getElementById('divToPrint');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("download.pdf");
+      })
+    ;
+  }
+
+  render() {
+    return (<div>
+      <div className="mb5">
+        <button onClick={this.printDocument}>Print</button>
+      </div>
+      <div id="divToPrint" className="mt4" {...css({
+        backgroundColor: '#f5f5f5',
+        width: '210mm',
+        minHeight: '297mm',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      })}>
+        <div>Note: Here the dimensions of div are same as A4</div> 
+        <div>You Can add any component here</div>
+      </div>
+    </div>);
+  }
+}
+    </script>
+
+<div class="as-console-wrapper" style="display: block;"><div class="as-console"><div class="as-console-row" data-date="03:56:43.780"><code class="as-console-row-code as-console-error">{
+  "message": "Uncaught ReferenceError: exports is not defined",
+  "filename": "https://stacksnippets.net/js",
+  "lineno": 3,
+  "colno": 23
+}</code></div></div></div></body></html>

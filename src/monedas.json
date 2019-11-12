@@ -1,0 +1,18 @@
+[
+	{
+		"nombre":"El Salvador",
+		"codArea":"+503",
+		"ico":"/paises/salvador.svg",
+		"moneda":"Dólar estadounidense",
+		"shortMoneda":"SVC",
+		"shortNombre":"SLV"
+	},
+	{
+		"nombre":"Honduras",
+		"codArea":"",
+		"ico":"/paises/honduras.svg",
+		"moneda":"Lempira",
+		"shortMoneda":"HNL",
+		"shortNombre":""
+	}
+]

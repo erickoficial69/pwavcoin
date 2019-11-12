@@ -1,0 +1,62 @@
+/*--------------------
+
+cartas de cuentas bancarias
+
+---------------------------------*/
+.CuentasBancarias {
+    width: 95%;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, 400px);
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto 30px;
+    padding-bottom: 30px;
+}
+
+.DatosBancarios {
+    padding: 0;
+    position: relative;
+}
+
+.DatosBancarios::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.22;
+    background-image: url(../../svg/banco2.svg);
+    background-size: 150px;
+    background-repeat: no-repeat;
+    background-position: 110% 110%;
+}
+
+.DatosBancarios > h2 {
+    background: #106ca0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #FFF;
+    font-size: 26px;
+    line-height: 1.5;
+}
+
+.DatosBancarios > p {
+    width: 90%;
+    padding: 10px 20px;
+    text-align: left;
+    color: #696969;
+    text-transform: capitalize;
+    line-height: 1.5;
+}
+
+@media only screen and (max-width:1024px) {
+
+    /*-------   Cuentas Bancarias   -----------*/
+    .CuentasBancarias {
+        width: 95%;
+        grid-template-columns: repeat(auto-fill, 350px);
+        margin: 0px auto 15px;
+    }
+}

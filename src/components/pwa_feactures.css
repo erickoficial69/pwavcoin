@@ -1,0 +1,148 @@
+.AlertInternet{
+    position: fixed;
+    top: 15%;
+    right: 30px;
+    animation: rebote 1.5s ease-out;
+    z-index: 1001;
+}
+@keyframes rebote{
+    0%,75%{
+        right: -50px;
+        opacity: 0;
+    }
+    80%{
+        right: 40px;
+    }
+    85%{
+        right: 20px;
+    }
+    90%{
+        right: 35px;
+    }
+    95%{
+        right: 25px;
+    }
+    100%{
+        right: 30px;
+    }
+}
+
+.SinInternet{
+    border-radius: 50%;
+    background-image: url('../svg/wifi.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(221, 99, 99);
+    background-size: 30px;
+    border: 2px solid rgb(224, 69, 69);
+    position: relative;
+    padding: 15px 24.5px;
+    animation: alert 1s infinite ease-out;
+    transform: scale(0);
+    cursor: pointer;
+}
+@keyframes alert{
+    0%{
+        
+        box-shadow: 0px 0px 1px 0px rgb(221, 99, 99);
+    }
+    100%{
+        box-shadow: 0px 0px 1px 20px transparent;
+    }   
+}
+.SinInternet::after{
+    content: "sin conexión";
+    position: absolute;
+    bottom: -10px;
+    right: -25px;
+    border-radius: 5px;
+    z-index: 10;
+    width: 100px;
+    height: 25px;
+    opacity: 0;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+    color:rgb(224, 69, 69);
+    transition: all 0.5s;
+    
+}
+.SinInternet:hover::after{
+    opacity: 1;
+    bottom: -25px;
+}
+.SinInternet::before{
+    content: "";
+    width: 2px;
+    height: 100%;
+    background-color: rgb(224, 69, 69);
+    position: absolute;
+    top: 0;
+    transform: rotate(45deg);
+}
+.Notificaciones{
+    position: fixed;
+    bottom: 50px;
+    right: 0px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    z-index: 1001;
+}
+
+.Install,.Notificacion,.AtencionEnLinea{
+    width: 45px;
+    height: 45px;
+    margin: 5px 0;
+    padding: 7.5px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    transition: all 0.5s;
+    align-items: center;
+    background-color: rgb(16, 108, 160);
+}
+.Install>img{
+    height: 25px;
+}
+.Notificacion>img,.AtencionEnLinea>img{
+    height: 25px;
+}
+.Install:hover,.Notificacion:hover,.AtencionEnLinea:hover{
+    padding-right: 120px;
+    border-radius: 10px;
+}
+.Install:hover>img,.Notificacion:hover>img,.AtencionEnLinea:hover>img{
+    margin-left: 25px;
+}
+.Install::after,.Notificacion::after,.AtencionEnLinea::after{
+    color: white;
+    position: absolute;
+    right: 100%;
+    font-size: 12px;
+    width: 100ox;
+    opacity: 0;
+    transition: all 0.6s;
+}
+.Install::after{
+    content: "Instalar en dispositivos";
+}
+.Notificacion::after{
+    content: "Activar Notificaciones";   
+}
+.AtencionEnLinea::after{
+    content: "Atencion via WhatsApp";
+}
+.resenas::after{
+    content: "Dejanos tu reseña";
+}
+
+.Install:hover::after,.Notificacion:hover::after,.AtencionEnLinea:hover::after{
+    opacity: 1;
+    right: 5%;
+    width: 80px;
+} 
