@@ -2,13 +2,17 @@ import Axios from 'axios';
 import {servers} from '../keys'
 const {devServer} = servers
 
-const recover = async (correo)=>{
-    
+const recover = async (correo,setMessage,setLoading)=>{
+    setLoading(true)
     const send = await Axios.post(`${devServer}/recoverpass`,{correo})
     if(send.data==='revise su correo'){
-        window.location.reload()
+        setLoading(false)
+        setMessage('Se ha enviado un correo de verificacion')
+        setTimeout(()=>{
+            setMessage(false)
+        },5000)
     }
-    
+
 }
 const updatePass = async (password,token)=>{
     

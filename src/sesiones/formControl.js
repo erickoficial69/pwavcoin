@@ -126,7 +126,7 @@ function FormSesion(props){
                    <div>
                    <input type="submit" className="btnBlue BTN" value="Iniciar Sesion"/>
                    </div>
-                   <Link to='/Recover/recover'>¿olviddo su contraseña?</Link>
+                   <Link to='/Recover/recover' onClick={()=>setOpen(false)} >¿olviddo su contraseña?</Link>
                    </form>
                </div>
                 <span onClick={()=>{setOpen(open ? false : true)}}className="BtnCerrar"><img src={cerrarBtn} alt=""/></span>

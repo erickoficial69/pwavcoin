@@ -35,7 +35,7 @@ function ProfileSettings(props){
         e.preventDefault()
         const photo = new FormData()
         photo.append('photo',e.target.files[0])
-        const sendFile = await axios.post('http://localhost:80/storagevcointransfer/upload.php',photo)
+        const sendFile = await axios.post(`${staticServer}/upload.php`,photo)
         const result = sendFile.data
         savePhoto(result,id,setLoading,setUser)
         return

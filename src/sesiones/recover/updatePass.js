@@ -25,18 +25,18 @@ function UpdatePass(props){
     if(token){
         return(
             <Fragment>
-                <section className='recover'>
-                    <form onSubmit={recoverPass} id='formRecover'>
-                        <div>
+                <section className="Entrar">
+                    <form className="Login Cartas" onSubmit={recoverPass} id='formRecover'>
+                        <div className='CampoFormulario' >
                             <label>Nueva contraseña</label>
                             <input type='text' name='password' onKeyUp={(e)=>setPass(e.target.value)} onChange={(e)=>setPass(e.target.value)} /> 
                         </div>
     
-                        <div>
+                        <div className='CampoFormulario' >
                             <label>Confirmar contraseña</label>
                             <input type='text' name='password' style={disabled?{border:'1px solid red'}:null} onKeyUp={verifyPass} onChange={verifyPass}/> 
                         </div>
-                        <input type='submit' value='confirmar' disabled={disabled}/>
+                        <input className={disabled?'btnRed':'btnGreen'} type='submit' value='confirmar' disabled={disabled}/>
                     </form>
                 </section>            
             </Fragment>

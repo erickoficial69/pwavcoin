@@ -1,9 +1,12 @@
-import React,{Fragment} from'react'
+import React,{Fragment,useState,useEffect} from'react'
 import {Redirect} from 'react-router-dom'
 import {recover} from '../../gets_apis/userServices'
 
 function Recover(props){
     const {service,dato} = props.match.params
+    const [loading, setLoading] = useState(false)
+    const [message,setMessage] = useState(false)
+    const [redir,setRedir] = useState(false)
 
     const recoverPass = async (e)=>{
         e.preventDefault()
@@ -11,36 +14,51 @@ function Recover(props){
         if(!email){
             return alert('ingrese el correo')
         }else{
-            recover(email)
+            recover(email,setMessage,setLoading)
         }
     }
-
+    
     if(service==='confirmado'){
-        return(
-            <Fragment>
-                <section className='recover'>
-                    <h1>ya puedes logearte</h1>
-                    {
-                        setTimeout(()=>{
-                            return <Redirect to='/' />
-                        },2000)
-                    }
-                </section>            
-            </Fragment>
-        )
+        setTimeout(()=>setRedir(true),3000)
+        return (
+            <section className="Entrar">
+                        <form className="Login Cartas " onSubmit={recoverPass}>
+                                
+                                <div className='CampoFormulario'>
+                                        <h2>Ya puedes iniciar sesion!!!</h2>     
+                                </div>
+                            {
+                                redir?<Redirect to='/' />:null
+                            }
+                        </form>
+                </section>       
+        )     
     }
     
     if(service==='recover'){
         return(
             <Fragment>
-                <section className='recover'>
-                    <form onSubmit={recoverPass}>
-                        <div>
-                            <label>correo</label>
-                            <input type='email' name='correo' /> 
-                        </div>
-                        <input type='submit' value='confirmar' />
-                    </form>
+                <section className="Entrar">
+                        <form className="FormSinUp Cartas" onSubmit={recoverPass}>
+                           
+                                {
+                                    loading?
+                                        <h1>Enviando correo de recuperacion</h1>:
+                                        <div className='CampoFormulario'>
+                                            <label>Inserte su correo</label>
+                                            <input type='email' name='correo' placeholder='example@gmail.com' autoFocus /> 
+                                            {message?
+                                                <p>
+                                                    {message}
+                                                </p>:
+                                                <button className='btnGreen'>Enviar</button>
+                                            }
+                                            
+                                        </div>
+                                }
+                            
+                            
+                        </form>
                 </section>            
             </Fragment>
         )
