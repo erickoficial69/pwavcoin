@@ -1,5 +1,5 @@
 import React,{Fragment} from'react'
-import {Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import {recover} from '../../gets_apis/userServices'
 
 function Recover(props){
@@ -20,6 +20,11 @@ function Recover(props){
             <Fragment>
                 <section className='recover'>
                     <h1>ya puedes logearte</h1>
+                    {
+                        setTimeout(()=>{
+                            return <Redirect to='/' />
+                        },2000)
+                    }
                 </section>            
             </Fragment>
         )

@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 
 import Header from './components/header'
 import Home from './rutas/home'
-import Recover from './rutas/recover'
-import UpdatePass from './rutas/recover/updatePass'
+import Recover from './sesiones/recover'
+import UpdatePass from './sesiones/recover/updatePass'
 
 import PwaFeacture from './components/pwa_feactures'
 

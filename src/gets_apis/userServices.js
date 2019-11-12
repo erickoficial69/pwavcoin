@@ -10,4 +10,12 @@ const recover = async (correo)=>{
     }
     
 }
-export {recover}
+const updatePass = async (password,token)=>{
+    
+    const send = await Axios.post(`${devServer}/updatepass`,[{password},{token}])
+    if(send.data==='ok'){
+        window.location.reload()
+    }
+    
+}
+export {recover,updatePass }

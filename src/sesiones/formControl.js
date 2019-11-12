@@ -11,6 +11,20 @@ function FormSesion(props){
     const [loading, setLoading] = useState('')
     const [loading2, setLoading2] = useState(false)
     const [verify, setVerify] = useState('')
+    const [pass,setPass] = useState('')
+    const [disabled,setDisabled] = useState(false)
+
+    const loadPass = (e)=>{
+        setPass(e.target.value)
+    }
+    const verifyPass = (e)=>{
+        if(pass !== e.target.value){
+            setDisabled(true)
+        }else{
+            setDisabled(false)
+        }
+    }
+
     const mostrar = ()=>{
         const register = document.querySelector('.BtnSinUp')
         register.classList.toggle('Cambio')
@@ -68,12 +82,12 @@ function FormSesion(props){
                    </div>
                    <div className="CampoFormulario">
                       <label  className="Requerido">contraseña</label>
-                       <input name='password' required type="password" placeholder="*****"/>
+                       <input name='password' required type="password" onKeyUp={loadPass} onChange={loadPass} placeholder="*****"/>
                    </div>
-                   {/* <div className="CampoFormulario">
+                   <div className="CampoFormulario">
                       <label className="Requerido" >Confirmar contraseña</label>
-                       <input type="password" placeholder="*****"/>
-                   </div> */}
+                       <input type="password" style={disabled?{border:'1px solid red'}:null} onKeyUp={verifyPass} onChange={verifyPass} placeholder="*****"/>
+                   </div>
                    <div>
                    <input type='hidden' name='rango' required value='cliente'/>
                     {
@@ -85,7 +99,7 @@ function FormSesion(props){
                     </div>
                     {verify === 'no' ? <span className='btnRed BTN'>correo ocupado</span>:
                     loading2?<span className='btnBlue BTN'>Cargando</span>:
-                    <button className='btnGreen BTN'>Registrate</button>}
+                    <button disabled={disabled} className='btnGreen BTN'>Registrate</button>}
                     </div>
                         </Fragment>
                     )
