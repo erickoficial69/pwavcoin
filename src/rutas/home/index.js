@@ -124,7 +124,7 @@ function Home(){
             <p>Permitiendo a nuestros clientes ahorrar tiempo, dinero y de esa forma satisfacer al 100% mas de 2000 clientes </p>
             <article>
                 <div className="Cartas">
-                    <img src={pMonitoreado}alt=""/>
+                    <img src={pMonitoreado} alt=""/>
                     <p><span>Proceso Bajo tu supervisión</span></p>
                 </div>
                 <div className="Cartas">
@@ -145,21 +145,20 @@ function Home(){
             <h1>Reseñas de clientes</h1>
             <div>
                 {
-                    loading?
-                    <article className="Resenas">
+                    loading?(
+                        <article className="Resenas">
                     <img src={profile} alt=""/>
                     <div className="Resena">
                         <p>cargando</p>
                         <h3>cargando</h3>
                     </div>
-                </article>:
-                resenas.map((res,i)=>{
+                </article>
+                    ): resenas.map((res,i)=>{
                     return(
                         <article className="Resenas">
                             <img src={profile} alt=""/>
                             <div className="Resena">
                                 <p>{res.mensaje}</p>
-                                <h3>jose alejandro montero</h3>
                             </div>
                         </article>
                     )

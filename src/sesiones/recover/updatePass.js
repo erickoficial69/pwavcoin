@@ -1,5 +1,4 @@
-import React,{Fragment,useState,useEffect} from'react'
-import {Link} from 'react-router-dom'
+import React,{Fragment,useState} from'react'
 import {updatePass} from '../../gets_apis/userServices'
 
 function UpdatePass(props){

@@ -195,7 +195,6 @@ const getBank = async (setBanks,id)=>{
 }
 const deleteBank = async (id)=>{
   const gets = await Axios.get(`${devServer}/deletebank/${id}`)
-  const data = gets.data
   
   if(gets.status === 200){
     window.location.reload()
@@ -241,7 +240,6 @@ const upgradeUser = async (valores,setLoading,setVerify)=>{
       idUsuario:valores.idusuario.value
     }
     const gets = await Axios.post(`${devServer}/upgradeUser`,datos)
-    const data = await gets.data
   
     if(gets.status === 200){
       setLoading(false)
@@ -256,7 +254,6 @@ const upgradeUser = async (valores,setLoading,setVerify)=>{
       idUsuario:valores.idusuario.value
     }
     const gets = await Axios.post(`${devServer}/upgradeUser`,datos)
-    const data = await gets.data
   
     if(gets.status === 200){
       setLoading(false)
@@ -271,7 +268,6 @@ const upgradeUser = async (valores,setLoading,setVerify)=>{
       idUsuario:valores.idusuario.value
     }
     const gets = await Axios.post(`${devServer}/upgradeUser`,datos)
-    const data = await gets.data
   
     if(gets.status === 200){
       setLoading(false)
@@ -289,7 +285,6 @@ const setStatusUser = async (valores,setLoading,setVerify)=>{
       idUsuario:valores.idusuario.value
     }
     const gets = await Axios.post(`${devServer}/setStatusUser`,datos)
-    const data = await gets.data
   
     if(gets.status === 200){
       setLoading(false)
@@ -301,7 +296,6 @@ const setStatusUser = async (valores,setLoading,setVerify)=>{
       idUsuario:valores.idusuario.value
     }
     const gets = await Axios.post(`${devServer}/setStatusUser`,datos)
-    const data = await gets.data
   
     if(gets.status === 200){
       setLoading(false)

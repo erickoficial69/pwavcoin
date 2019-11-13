@@ -1,9 +1,9 @@
-import React,{Fragment,useState,useEffect} from'react'
+import React,{Fragment,useState} from'react'
 import {Redirect} from 'react-router-dom'
 import {recover} from '../../gets_apis/userServices'
 
 function Recover(props){
-    const {service,dato} = props.match.params
+    const {service} = props.match.params
     const [loading, setLoading] = useState(false)
     const [message,setMessage] = useState(false)
     const [redir,setRedir] = useState(false)

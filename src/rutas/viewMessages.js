@@ -28,7 +28,7 @@ const ViewMessages = (props)=>{
     }
     useEffect(()=>{
         setTabla(message)
-    })
+    },[message])
     return(
         <Fragment>
             <div id='containerForm'>

@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useEffect} from'react'
-import {updatePedido,pedidosAdministrador} from '../../gets_apis/sockets'
+import {pedidosAdministrador} from '../../gets_apis/sockets'
 import detalles from '../../svg/detalles.svg'
 import advertencia from '../../svg/advertencia.svg'
 import enviado from '../../svg/enviado.svg'

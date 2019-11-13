@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from'react'
+import React, {useState, useEffect} from'react'
 import {Link} from 'react-router-dom'
 import {getUsers,getUser} from '../../gets_apis/api_sesion'
 import detalles from '../../svg/detalles.svg'

@@ -1,4 +1,4 @@
-import React,{Fragment, useEffect, useState, useLayoutEffect} from 'react'
+import React,{Fragment, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import './header_dashboard.css'
 import {notificationPedido, notificacioNoticias,notificationtoOperador,messages,updateMessage,deleteMessage} from '../gets_apis/sockets'
@@ -69,7 +69,7 @@ useEffect(()=>{
                     {user.rango === 'administrador' ?( <Link onClick={show} to="/Dashboard/AddPais">Administrar de monedas</Link>):null}
                     {user.rango !== 'cliente' ?( <Link onClick={show} to="/Dashboard/Users">Control de usuarios</Link>):null}
                     {<Link onClick={show} to={`/Dashboard/ProfileSettings/${user.idUsuario}`}>Configuración</Link>}
-                    <Link onClick={show} onClick={logout} to="/">Salir</Link>
+                    <Link onClick={logout} to="/">Salir</Link>
     </aside>
         </Fragment>
     ):null

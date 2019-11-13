@@ -154,7 +154,7 @@ function FormPedidos(props){
           setMostrar(false)
       }
       setCliente(user)
-    },[])
+    },[open])
     
     return open === true ?(
         <div id='containerForm'>
@@ -244,12 +244,11 @@ const FormRegisterUser = (props)=>{
     const {modalReg, setModalReg, idOperador} = props
     const [loading2, setLoading2] = useState(false)
     const [verify, setVerify] = useState('')
-    const [ctrl, setCtrl] = useState(false)
 
     const startVerify = e =>verifyMail(e,setVerify,setLoading2)
     const startRegister = async e =>{
         e.preventDefault()
-        registerUser(e, setLoading2,setModalReg,setCtrl)
+        registerUser(e, setLoading2,setModalReg)
         return document.querySelector('#reg').reset()
     }
 useEffect(()=>{

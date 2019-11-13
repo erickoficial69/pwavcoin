@@ -1,4 +1,4 @@
-import React, {useState, Fragment, useEffect} from 'react'
+import React, {useState, Fragment} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import {AlertaRoja, Alerta} from '../components/alerts/alerts'
 

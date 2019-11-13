@@ -23,7 +23,7 @@ const FormComents = (props)=>{
     }
 useEffect(()=>{
     setUser(sessionStorage.userSesion?JSON.parse(sessionStorage.userSesion):{})
-})
+},[])
     return(
         <Fragment>
             <div id='containerForm'>
@@ -39,14 +39,14 @@ useEffect(()=>{
                     <label>
                         Mensaje
                     </label>
-                    <textarea name='mensaje'>
+                    {!loading?<textarea name='mensaje'>
 
-                    </textarea>
+                    </textarea>:null}
                     </div>
 
                         <input className='btnGreen BTN' type='submit' value='enviar' />
 
-                    <input type='hidden' name='idRemitente' value={user.idUsuario}/>
+                        {!loading?<input type='hidden' name='idRemitente' value={user.idUsuario}/>:null}
                 </form>
                 <span onClick={()=>{setModalComents(modalComents ? false : true)}}className="BtnCerrar1"><img src={cerrarBtn} alt=""/></span>
                 </article>

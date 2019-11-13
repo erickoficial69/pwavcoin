@@ -49,7 +49,7 @@ const AddPais = ()=>{
             <div className='container'>
                 <h1>Gestionar monedas</h1>
                 <div className='containerTazaActual'>
-                    <TazaActual setLoading={setLoading} dir={document.location.pathname}/>
+                    <TazaActual setLoading={setLoading} loading={loading} dir={document.location.pathname}/>
                 </div>
                 
                 <form style={openTab==='cerrado'?

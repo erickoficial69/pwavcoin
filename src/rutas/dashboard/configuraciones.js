@@ -1,8 +1,7 @@
-import React, {useEffect,useState,Fragment} from 'react'
+import React, {useEffect,useState} from 'react'
 import './user.css'
-import {getOneUser,PhoneNumberByUser,updateOneUser,updatePhoneNumber,savePhoto} from '../../gets_apis/api_sesion'
+import {getOneUser,updateOneUser,savePhoto} from '../../gets_apis/api_sesion'
 import seguro from '../../svg/metodoSeguro.svg'
-import fotoPerfil from '../../components/images/team-member01-150x150.jpg'
 import './configuraciones.css'
 import axios from 'axios'
 import avatar from '../../svg/usuario.svg'
@@ -13,9 +12,7 @@ const {staticServer} = servers
 function ProfileSettings(props){
     const {id} = props.match.params
     const [user, setUser] = useState({})
-    const [phone, setPhones] = useState([])
     const [loading,setLoading] = useState(false)
-    const [verify,setVerify] = useState(false)
     
     const updatePersonalInfo = async e =>{
         e.preventDefault()
@@ -40,24 +37,10 @@ function ProfileSettings(props){
         savePhoto(result,id,setLoading,setUser)
         return
     }
-    const updateContact = async e =>{
-        e.preventDefault()
-
-        if(e.target.numero.value===''){
-            return alert('no deben haber campos vacios')
-        }
-        
-        const datos ={
-            id:e.target.id.value,
-            numero:e.target.numero.value,
-        }
-        updatePhoneNumber(datos,setLoading)
-    }
 
     useEffect(()=>{
-        verify?getOneUser(setUser,id,setLoading):getOneUser(setUser,id,setLoading)
-        PhoneNumberByUser(id,setPhones)
-    },[verify])
+        getOneUser(setUser,id,setLoading)
+    },[id])
 
     return(
         <div className='container'>
@@ -66,7 +49,7 @@ function ProfileSettings(props){
         <div className="ActualizarDatos">
           
             <div className="Foto1">
-                <img src={user.foto?staticServer+user.foto:avatar} alt=""/>
+                {!loading?<img src={user.foto?staticServer+user.foto:avatar} alt=""/>:null}
                 <div className="Subir">
                     <input type="file" name='foto' onChange={updatePhoto}/>
                 </div>
@@ -92,7 +75,7 @@ function ProfileSettings(props){
         <h2>Datos de contacto</h2>
         <div>
           <div className="VerificarDatos">
-            <form onSubmit={updateContact}>
+            <form >
                 <div className="CampoFormulario">
                     <label className="Requerido"> numero de telefono </label>
 

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import './or.css'
-import desc from '../../../svg/descargar1.svg'
 import cont from '../../../svg/contrato.svg'
 import {updatePedido,updatePedidoAdm} from '../../../gets_apis/sockets'
 import {getBanks,getPedido} from '../../../gets_apis/api_sesion'
@@ -8,7 +7,6 @@ import {Redirect} from 'react-router-dom'
 
 const VerifyOrder = (props)=>{
     const {item,rank,idUser} = props.match.params
-    const [cliente, setCliente] = useState('')
     const [load, setLoad] = useState(true)
     const [banks, setBanks] = useState([{}])
     const [pedido,setPedido] = useState({})
@@ -34,11 +32,9 @@ const VerifyOrder = (props)=>{
         return
     }
 useEffect(()=>{
-    const usuario = JSON.parse(sessionStorage.userSesion)
     getBanks(setBanks,idUser,setLoad)
-    setCliente(usuario)
     getPedido(item,setPedido,setLoad)
-},[])
+},[item,idUser])
 
     return rank===undefined?(
         <div className='container' >

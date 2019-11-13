@@ -40,7 +40,7 @@ const PedidosCliente = (props)=>{
 
         useEffect(()=>{
                 pedidos(typeUser.idUsuario,setTabla,limit,setLoading)
-        },[limit])
+        },[limit,typeUser.idUsuario])
  return(
         <Fragment>  
             

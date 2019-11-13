@@ -21,21 +21,21 @@ function BankAcount(){
         <section className="CuentasBancarias">
             
             {
-               banks.map((items, i)=><article key={i} className="DatosBancarios Cartas">
-                <h2>{items.banco}</h2>
-                <p>
-                    <span>titular:</span> {items.titular}
-                    <br/>
-                    <span>C.I:</span> {items.dniTitular}
-                    <br/>
-                    <span>Banco:</span> {items.banco}
-                    <br/>
-                    <span>Tipo de Cuenta:</span> {items.tipoCuenta}
-                    <br/>
-                    <span>Numero de Cuenta:</span> {items.numeroCuenta}
-                </p>
-                <span onClick={()=>deleteBank(items.id)} className="BtnCerrar"><img src={cerrarBtn} alt=""/></span>
-            </article>)
+               !load?banks.map((items, i)=><article key={i} className="DatosBancarios Cartas">
+               <h2>{items.banco}</h2>
+               <p>
+                   <span>titular:</span> {items.titular}
+                   <br/>
+                   <span>C.I:</span> {items.dniTitular}
+                   <br/>
+                   <span>Banco:</span> {items.banco}
+                   <br/>
+                   <span>Tipo de Cuenta:</span> {items.tipoCuenta}
+                   <br/>
+                   <span>Numero de Cuenta:</span> {items.numeroCuenta}
+               </p>
+               <span onClick={()=>deleteBank(items.id)} className="BtnCerrar"><img src={cerrarBtn} alt=""/></span>
+           </article>):null
             }
             </section>
             </div>        

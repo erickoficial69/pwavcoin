@@ -1,6 +1,5 @@
 import React,{useEffect,useState} from'react'
 import TazaActual from './tazaActual'
-import {Redirect} from 'react-router-dom'
 import './dashboard.css'
 
 import PedidosAdm from './pedidosAdm'
