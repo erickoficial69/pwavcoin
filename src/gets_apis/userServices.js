@@ -15,10 +15,16 @@ const recover = async (correo,setMessage,setLoading)=>{
 
 }
 const updatePass = async (password,token)=>{
-    
-    const send = await Axios.post(`${devServer}/updatepass`,[{password},{token}])
-    if(send.data==='ok'){
-        window.location.reload()
+    const data = {
+        password,
+        token
+    }
+
+    const send = await Axios.post(`${devServer}/updatepass`,{data})
+    if(send.data==='Recuperacion Exitosa!!'){
+        window.location = '/'
+    }else{
+         window.location.reload()
     }
     
 }

@@ -8,7 +8,7 @@ function UpdatePass(props){
 
     const recoverPass = async (e)=>{
         e.preventDefault()
-        if(pass !== e.target.value){
+        if(pass !== e.target.pass2.value){
             setDisabled(true)
         }else{
             updatePass(pass,token)
@@ -33,7 +33,7 @@ function UpdatePass(props){
     
                         <div className='CampoFormulario' >
                             <label>Confirmar contraseña</label>
-                            <input type='text' name='password' style={disabled?{border:'1px solid red'}:null} onKeyUp={verifyPass} onChange={verifyPass}/> 
+                            <input type='text' name='pass2' style={disabled?{border:'1px solid red'}:null} onKeyUp={verifyPass} onChange={verifyPass}/> 
                         </div>
                         <input className={disabled?'btnRed':'btnGreen'} type='submit' value='confirmar' disabled={disabled}/>
                     </form>
