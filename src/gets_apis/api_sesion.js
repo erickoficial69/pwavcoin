@@ -355,8 +355,10 @@ const savePhoto = async(result,idUsuario,setLoading)=>{
     
     if(rs==='ok'){
       secureSesion(idUsuario)
-      setLoading('imagen actualizada')
-      setTimeout(setLoading(false),2000)
+      
+      setTimeout(()=>{
+          setLoading(false)
+      },2000)
     }
 }
 export {verifyMail, login, registerUser, getBanks, addBank,deleteBank,getPedidosg,getPedido,getPaises,deletePedido,imgPaises,dataPais,getUsers,getUser,getOneUser,upgradeUser,setStatusUser,getBank,getBankPedido,PhoneNumberByUser,updateOneUser,updatePhoneNumber,secureSesion,downloadPdf,savePhoto}

@@ -49,10 +49,12 @@ function ProfileSettings(props){
         <div className="ActualizarDatos">
           
             <div className="Foto1">
-                {!loading?<img src={user.foto?staticServer+user.foto:avatar} alt=""/>:null}
-                <div className="Subir">
+                {!loading?<img src={user.foto?staticServer+user.foto:avatar} alt=""/>:<img src={avatar} alt=""/>}
+                {
+                    loading?'cargando':<div className="Subir">
                     <input type="file" name='foto' onChange={updatePhoto}/>
                 </div>
+                }
            
             </div>
             <form onSubmit={updatePersonalInfo}>
