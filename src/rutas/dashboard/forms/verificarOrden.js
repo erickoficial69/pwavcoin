@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import './or.css'
 import cont from '../../../svg/contrato.svg'
 import {updatePedido,updatePedidoAdm} from '../../../gets_apis/sockets'
-import {getBanks,getPedido} from '../../../gets_apis/api_sesion'
+import {getBanks,getPedido, downloadPdf} from '../../../gets_apis/api_sesion'
 import {Redirect} from 'react-router-dom'
 
 const VerifyOrder = (props)=>{
@@ -31,6 +31,12 @@ const VerifyOrder = (props)=>{
         updatePedidoAdm(e.target,pedido,setVerify)
         return
     }
+
+    const download=async(e)=>{
+        return console.log(e.target.attributes)
+          downloadPdf(e)
+        }
+
 useEffect(()=>{
     getBanks(setBanks,idUser,setLoad)
     getPedido(item,setPedido,setLoad)
@@ -65,12 +71,14 @@ useEffect(()=>{
             <input
                 className={!load?'btnGreen BTN':'btnRed BTN'} 
                 type='submit' value={!load?'Enviar Comprobante':'cargando'} disabled={!load?'':'disabled'} />
-
-            <h3>Para Depositos en efectivo</h3>
-            {/* <button className="BtnDescarga"><img src={desc} alt="Descargar libreta" /><label>Imprimir libreta</label> </button> */}
-                <p className="BtnDescarga"><img src={cont} alt="Descargar libreta" /><label>descargar libreta</label> </p>
              
         </form>
+
+        <h3>Para Depositos en efectivo</h3>
+            {/* <button className="BtnDescarga"><img src={desc} alt="Descargar libreta" /><label>Imprimir libreta</label> </button> */}
+                <button className="btnBlue BTN" id={item} onClick={download} >
+                    descargar libreta
+                </button>
         </article>
         {verify==='ok'?<Redirect to='/Dashboard'/>:null}
         </div>

@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect} from'react'
 import {Link} from 'react-router-dom'
 import {updatePedidoAdm,pedidosAdministrador,deletePedido} from '../../gets_apis/sockets'
+import {downloadPdf} from '../../gets_apis/api_sesion'
 import palometa from '../../svg/palometa.svg'
 import detalles from '../../svg/detalles.svg'
 import cerrarDetalles from '../../svg/cerrar.svg'
@@ -33,7 +34,11 @@ const PedidosAdm = (props)=>{
        const show = e =>{
            e.target.classList.toggle('detalles')
        }
-       
+
+       const download=async(e)=>{
+          downloadPdf(e)
+        }
+
         useEffect(()=>{
             pedidosAdministrador(setTabla,limit,setLoading)
         },[limit])
@@ -221,7 +226,9 @@ const PedidosAdm = (props)=>{
                                     <span>
                                        <p>
                                        referencia bancaria: <span>
-                                               Definir por administrador
+                                               {
+                                                   pedido.referenciaRetiro?pedido.referenciaRetiro:'Definir por administrador'
+                                               }
                                             </span>
                                         </p>
                                         <p>
@@ -232,7 +239,8 @@ const PedidosAdm = (props)=>{
                                     </span>
                                 </article>
                                 <div className="Botones">
-                                <p className="btnBlue">descargar</p>
+
+                                <p className="btnBlue print" id={pedido.idPedido} onClick={download}>Descargar</p>
                                 
                                 <p className="btnGreen" onClick={()=>setModal(modal?false:true)} >mensaje</p>
                                 </div>
