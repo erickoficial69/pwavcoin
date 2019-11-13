@@ -33,7 +33,6 @@ const VerifyOrder = (props)=>{
     }
 
     const download=async(e)=>{
-        return console.log(e.target.attributes)
           downloadPdf(e)
         }
 
@@ -76,7 +75,7 @@ useEffect(()=>{
 
         <h3>Para Depositos en efectivo</h3>
             {/* <button className="BtnDescarga"><img src={desc} alt="Descargar libreta" /><label>Imprimir libreta</label> </button> */}
-                <button className="btnBlue BTN" id={item} onClick={download} >
+                <button className={!load?'btnBlue BTN':'btnRed BTN'} id={item} onClick={download} disabled={!load?'':'disabled'} >
                     descargar libreta
                 </button>
         </article>
