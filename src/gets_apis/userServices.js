@@ -22,6 +22,7 @@ const updatePass = async (password,token)=>{
 
     const send = await Axios.post(`${devServer}/updatepass`,{data})
     if(send.data==='Recuperacion Exitosa!!'){
+        alert('Recuperacion Exitosa!!')
         window.location = '/'
     }else{
          window.location.reload()
