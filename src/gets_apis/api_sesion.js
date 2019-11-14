@@ -303,14 +303,7 @@ const setStatusUser = async (valores,setLoading,setVerify)=>{
     }
   }
 }
-const PhoneNumberByUser = async (id,setPhones)=>{
-  
-  const gets = await Axios.post(`${devServer}/phoneNumberByUser`,{id})
-  const data = gets.data
-  if(gets.status===200){
-    setPhones(data)
-  }
-}
+
 const updateOneUser = async (datos,setLoading)=>{
   setLoading(true)
   const gets = await Axios.post(`${devServer}/updateProfile`,datos)
@@ -361,4 +354,4 @@ const savePhoto = async(result,idUsuario,setLoading)=>{
       },2000)
     }
 }
-export {verifyMail, login, registerUser, getBanks, addBank,deleteBank,getPedidosg,getPedido,getPaises,deletePedido,imgPaises,dataPais,getUsers,getUser,getOneUser,upgradeUser,setStatusUser,getBank,getBankPedido,PhoneNumberByUser,updateOneUser,updatePhoneNumber,secureSesion,downloadPdf,savePhoto}
+export {verifyMail, login, registerUser, getBanks, addBank,deleteBank,getPedidosg,getPedido,getPaises,deletePedido,imgPaises,dataPais,getUsers,getUser,getOneUser,upgradeUser,setStatusUser,getBank,getBankPedido,updateOneUser,updatePhoneNumber,secureSesion,downloadPdf,savePhoto}

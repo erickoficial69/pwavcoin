@@ -35,6 +35,7 @@ function ProfileSettings(props){
         const sendFile = await axios.post(`${staticServer}/upload.php`,photo)
         const result = sendFile.data
         savePhoto(result,id,setLoading,setUser)
+        getOneUser(setUser,id,setLoading)
         return
     }
 
