@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import './user.css'
-import {getOneUser,updateOneUser,savePhoto} from '../../gets_apis/api_sesion'
+import {getOneUser,updateOneUser,savePhoto,updatePhoneNumber} from '../../gets_apis/api_sesion'
 import seguro from '../../svg/metodoSeguro.svg'
 import './configuraciones.css'
 import axios from 'axios'
@@ -35,12 +35,24 @@ function ProfileSettings(props){
         const sendFile = await axios.post(`${staticServer}/upload.php`,photo)
         const result = sendFile.data
         savePhoto(result,id,setLoading,setUser)
-        return
+        getOneUser(setUser,id,setLoading)
+        
+    }
+
+    const updatePhone = async e =>{
+        const data ={
+            numero:e.target.value,
+            id:id
+        }
+        updatePhoneNumber(data,setLoading)
+        setTimeout(() => {
+            getOneUser(setUser,id,setLoading)
+        }, 2000);
     }
 
     useEffect(()=>{
-        getOneUser(setUser,id,setLoading)
-    },[id])
+        setUser(user)
+    })
 
     return(
         <div className='container'>
@@ -80,8 +92,8 @@ function ProfileSettings(props){
             <form >
                 <div className="CampoFormulario">
                     <label className="Requerido"> numero de telefono </label>
-
-                   <input type="text" name='numero' defaultValue={user.telefono} readOnly/>
+                    {loading?<label>actualizando...</label>:null}
+                   <input type="text" name='numero' defaultValue={user.telefono} onKeyUp={updatePhone} onChange={updatePhone}/>
                    
                 </div>
                 <div className="CampoFormulario">

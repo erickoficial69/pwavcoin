@@ -90,7 +90,7 @@ const login = async (data,setLoading)=>{
               setLoading('usuario suspendido')
               return 
             }
-              await sessionStorage.setItem('userSesion', JSON.stringify(res))
+              sessionStorage.setItem('userSesion', JSON.stringify(res))
               
               setLoading('logged')
             return 
@@ -303,14 +303,6 @@ const setStatusUser = async (valores,setLoading,setVerify)=>{
     }
   }
 }
-const PhoneNumberByUser = async (id,setPhones)=>{
-  
-  const gets = await Axios.post(`${devServer}/phoneNumberByUser`,{id})
-  const data = gets.data
-  if(gets.status===200){
-    setPhones(data)
-  }
-}
 const updateOneUser = async (datos,setLoading)=>{
   setLoading(true)
   const gets = await Axios.post(`${devServer}/updateProfile`,datos)
@@ -324,13 +316,12 @@ const updatePhoneNumber = async (datos,setLoading)=>{
   setLoading(true)
   const gets = await Axios.post(`${devServer}/updatePhoneNumber`,datos)
   const data = gets.data
-  data.update==='ok'?setLoading(false):setLoading(false)
 
   if(data.update==='ok'){
-    alert('Datos Actualizados, los cambios estaran presentes en su proxima sesion')
+    setLoading(false)
   }
 }
-const downloadPdf=async(e)=>{
+const downloadPdf=async(e,setLoadPdf)=>{
   const getData = await Axios.post(`${devServer}/pedido`,{id:e.target.attributes.id.value})
    const dataPedido =  getData.data
    
@@ -341,7 +332,7 @@ const downloadPdf=async(e)=>{
        const desc = await Axios.get(`${devServer}/getpdf/${dataPedido.idPedido}`,{responseType:'blob'})
        const pdfBlob = new Blob([desc.data], { type: 'application/pdf' });
        saveAs(pdfBlob,`${dataPedido.idPedido}`)
-       return
+       setLoadPdf(false)
    }
 }
 const savePhoto = async(result,idUsuario,setLoading)=>{
@@ -361,4 +352,11 @@ const savePhoto = async(result,idUsuario,setLoading)=>{
       },2000)
     }
 }
-export {verifyMail, login, registerUser, getBanks, addBank,deleteBank,getPedidosg,getPedido,getPaises,deletePedido,imgPaises,dataPais,getUsers,getUser,getOneUser,upgradeUser,setStatusUser,getBank,getBankPedido,PhoneNumberByUser,updateOneUser,updatePhoneNumber,secureSesion,downloadPdf,savePhoto}
+
+const rastrearPedido = async(idPedido,setPedido)=>{
+    const insert = await Axios.post(`${devServer}/rastrearpedido`,{idPedido})
+    const rs = insert.data
+    setPedido(rs)
+}
+
+export {verifyMail, login, registerUser, getBanks, addBank,deleteBank,getPedidosg,getPedido,getPaises,deletePedido,imgPaises,dataPais,getUsers,getUser,getOneUser,upgradeUser,setStatusUser,getBank,getBankPedido,updateOneUser,updatePhoneNumber,secureSesion,downloadPdf,savePhoto,rastrearPedido}

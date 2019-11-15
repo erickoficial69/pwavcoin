@@ -11,6 +11,7 @@ const VerifyOrder = (props)=>{
     const [banks, setBanks] = useState([{}])
     const [pedido,setPedido] = useState({})
     const [verify,setVerify]=useState('')
+    const [loadPdf, setLoadPdf] = useState(true)
 
     const confirmar = e =>{
         e.preventDefault()
@@ -33,7 +34,8 @@ const VerifyOrder = (props)=>{
     }
 
     const download=async(e)=>{
-          downloadPdf(e)
+        setLoad(true)
+          downloadPdf(e,setLoadPdf)
         }
 
 useEffect(()=>{
@@ -75,8 +77,8 @@ useEffect(()=>{
 
         <h3>Para Depositos en efectivo</h3>
             {/* <button className="BtnDescarga"><img src={desc} alt="Descargar libreta" /><label>Imprimir libreta</label> </button> */}
-                <button className={!load?'btnBlue BTN':'btnRed BTN'} id={item} onClick={download} disabled={!load?'':'disabled'} >
-                    descargar libreta
+                <button className={!load?'btnBlue BTN':'btnRed BTN'} id={item} onClick={download} disabled={!loadPdf?'':'disabled'} >
+                    {!loadPdf?'descargar libreta':'generando'}
                 </button>
         </article>
         {verify==='ok'?<Redirect to='/Dashboard'/>:null}

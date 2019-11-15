@@ -5,7 +5,7 @@
 }
 
 .Configuracion{
-    width: 95%;
+    width: 98%;
     position: relative;
     margin: 0 auto ;
 }
@@ -23,18 +23,18 @@
     text-align: center;
     position: relative;
     margin: 0 auto;
-    height: 170px;
-    width: 170px;
+    height: 30vmin;
+    width: 30vmin;
     overflow: hidden;
 }
 .Foto1{
     border: 3px solid rgb(56, 143, 194);
-    overflow: hidden;
     border-radius: 50%;
 }
 .Foto1>img{
     margin: 0 auto;
-    position: relative;  
+    position: relative;
+    object-fit: cover;  
 }
 .Subir{
     width: 35px;
@@ -67,11 +67,7 @@
     top: 0;
     right: 0;
 }
-/* .ActualizarDatos>form{
-    display: grid;
-    grid-template-columns: 49% 49%;
-    grid-gap: 10px;
-} */
+
 
 .VerificarDatos{
     display: grid;
@@ -93,50 +89,10 @@
     grid-row-end: 3;
 }
 
-@media(min-width:512px){
-    
-    .Configuracion{
-        width: 80%;
-        position: relative;
-        margin: 0 auto;
-    }
+@media(min-width:720px){
     .ActualizarDatos{
         display: grid;
-        grid-template-columns:50% 50%;
-        align-items: center;    
-    }
-    .Foto1{
-        height:  200px;
-        width: 200px;
-    }
-    .Subir{
-        bottom: 10px;
-        right: 30px;
-        height: 50px;
-    }
-    .Subir::after{
-        background-size: 100%;
-    }
-    .VerificarDatos{
-        display: grid;
-        grid-template-columns: 60% 30%;
-        align-items: center;
-        justify-content: center;
-    }
-    .Foto2{
-        grid-row-start: 1;
-        grid-row-end: 2;
-        grid-column-start: 2;       
-        grid-row-end: 3;
-    }
-    .Foto2>img{
-        width: 200px !important;
-    }
-}
-@media(min-width:600px){
-    .ActualizarDatos{
-        display: grid;
-        grid-template-columns:30% 70%;
+        grid-template-columns:35% 65%;
     }
    
     .ActualizarDatos>form{
@@ -151,5 +107,14 @@
     }
     .ActualizarDatos>form>input{
         grid-row-start: 6;
+    }
+    .Foto1,.Foto2{
+        height: 20vmin;
+        width: 20vmin;
+    }
+}
+@media(min-width:1080px){
+    .Configuracion{
+        width: 100vmin;
     }
 }

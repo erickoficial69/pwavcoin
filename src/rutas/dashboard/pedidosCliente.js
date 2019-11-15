@@ -19,6 +19,7 @@ const PedidosCliente = (props)=>{
         const [limit, setLimit] = useState(31)
         const [loading,setLoading] = useState(true)
         const [modal,setModal] = useState(false)
+        const [loadPdf, setLoadPdf] = useState(false)
 
        const showModal = e =>{
             if(e.target.attributes.status.textContent === 'cancelada'){
@@ -32,7 +33,8 @@ const PedidosCliente = (props)=>{
             return
         }
        const download=async(e)=>{
-          downloadPdf(e)
+        setLoadPdf(true)
+        downloadPdf(e,setLoadPdf)
         }
        const show = e =>{
            e.target.classList.toggle('detalles')
@@ -192,7 +194,7 @@ const PedidosCliente = (props)=>{
                                 </span>
                             </article>
                             <div className="Botones">
-                            <p className="btnBlue print" id={items.idPedido} onClick={download}>Descargar</p> 
+                            <p className="btnBlue print" id={items.idPedido} onClick={download}>{!loadPdf?'descargar':'generando'}</p> 
                             </div>
                             
                         </article>
