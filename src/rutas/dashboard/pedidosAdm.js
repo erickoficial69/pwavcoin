@@ -242,7 +242,7 @@ const PedidosAdm = (props)=>{
                                 </article>
                                 <div className="Botones">
 
-                                <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'generando'}</p>
+                                <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p>
                                 
                                 <p className="btnGreen" onClick={()=>setModal(modal?false:true)} >mensaje</p>
                                 </div>

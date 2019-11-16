@@ -369,9 +369,10 @@ header>div>h2{
 ---------------------------------------*/
 
 .Rastreador{
-    height: 350px;
+    height: auto;
     background-image: url(../../components/images/background.jpg);
     background-size: cover;
+    padding-bottom: 25px;;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
 
@@ -400,5 +401,62 @@ header>div>h2{
 }
 .Rastreador>div>a{
     width: 150px;
+    margin: 10px auto;
     text-align: center;
+}
+.ResultadoRastreador{
+    width: 350px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 2px grey;
+    animation: entradaRes 1s ease;
+}
+@keyframes entradaRes{
+    0%{
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+    }
+    100%{
+        opacity: 1;
+        height: 150px;
+    }
+}
+.ResultadoRastreador > h2 {
+        background: #106ca0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: #FFF;
+        font-size: 26px;
+        line-height: 1.5;
+    }
+    
+    .ResultadoRastreador > p {
+        width: 90%;
+        padding: 10px 20px;
+        text-align: left;
+        color: #696969;
+        text-transform: capitalize;
+        line-height: 1.5;
+    }
+    @media only screen and (max-width:500px){
+        .ResultadoRastreador{
+            width:90%;
+        }
+    }
+
+
+/*-------------------------------------
+                footer
+---------------------------------------*/
+
+.Footer{
+    height: 100px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a3a3a;
+}
+.Footer>span>a{
+    color: rgba(255, 255, 255, 0.56);
 }

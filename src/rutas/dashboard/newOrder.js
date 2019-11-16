@@ -1,5 +1,6 @@
 import React,{Fragment} from 'react'
 import Calculator from '../../components/calculator/calculator'
+import './NewOrder.css'
 
 function NewOrder(props){
     const {propietario} = props.match.params
@@ -7,10 +8,10 @@ function NewOrder(props){
         <Fragment>
             <div className='container'>
                 <h1>Nueva Orden</h1>
-                <section className='contanerCalc'>
+                <section className='contanerCalc Cartas CalculadoraOrden'>
                     <Calculator propietario={propietario}/>
                 </section>
-            </div>  
+            </div>
         </Fragment>
     )
 }

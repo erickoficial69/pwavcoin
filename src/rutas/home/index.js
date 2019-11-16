@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect,useState} from'react'
 import {Link,Redirect} from 'react-router-dom'
-import {coments} from '../../gets_apis/sockets'
+import {coments, pedidos} from '../../gets_apis/sockets'
+import {rastrearPedido} from '../../gets_apis/api_sesion'
 import './home.css'
 import Calculator from '../../components/calculator/calculator'
 import logo1 from '../../components/images/logo.png'
@@ -24,6 +25,7 @@ import Brubank from '../../components/images/brubank.png'
 function Home(){ 
     const [resenas, setResena] = useState([])
     const [loading, setLoading] = useState(false)
+    const [pedido, setPedido] = useState({})
     useEffect(()=>{
         coments(setLoading,setResena)
     },[])
@@ -169,13 +171,32 @@ function Home(){
         <section id="Rastrear" className="Rastreador">
             <h1>Rastreador</h1>
             <div className="Buscador">
-                <input type="text" placeholder="Introduce el ID de tu orden aqui" />
+                <input type="text" placeholder="Introduce el ID de tu orden aqui" onChange={(e)=>rastrearPedido(e.target.value,setPedido)} onKeyUp={(e)=>rastrearPedido(e.target.value,setPedido)}/>
+            <div className="ResultadoRastreador">
+            
+            <h2>{pedido.status}</h2>
+               <p>
+                   <span>ID:</span> 0000000004
+                   <br/>
+                   <span>Remitente:</span> Leonardo medina
+                   <br/>
+                   <span>Deposito:</span> 50 dolares americanos
+                   <br/>
+                   <span>Destinatario</span> jesus medina
+                   <br/>
+                   <span>Monto</span> 150.000BSF
+               </p>
+               </div>
                 <Link to='/' className="btnGreen">
                     Rastrear orden
                 </Link>
             </div>
         </section>
     </main>
+    <div className="Footer">
+        <span>Copyright © 2019 <a href="#">VCoin Transfer</a> | WebMasters <a href="#">@NovatoCreativo</a></span>
+    </div>
+    
         </Fragment>
     ):<Redirect to='/Dashboard'/>
 } 

@@ -1,0 +1,15 @@
+
+.CalculadoraOrden{
+    width: 500px;
+    margin-top: 20% ;
+    margin: 0 auto;
+}
+@media(max-width:500px){
+    .CalculadoraOrden{
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+.container{
+    text-align: left;
+}

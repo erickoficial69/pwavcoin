@@ -218,7 +218,7 @@ const PedidosAdm = (props)=>{
                         </span>
                     </article>
                     <div className="Botones">
-                    <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'generando'}</p>
+                    <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p>
                     </div>
                     
                 </article>
