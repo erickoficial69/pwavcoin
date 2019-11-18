@@ -244,7 +244,7 @@ const PedidosAdm = (props)=>{
 
                                 <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p>
                                 
-                                <p className="btnGreen" onClick={()=>setModal(modal?false:true)} >mensaje</p>
+                                <p className="btnGreen" onClick={()=>setModalMessage(modalMessage?false:true)} >mensaje</p>
                                 </div>
                                 {
                                     modalMessage?
