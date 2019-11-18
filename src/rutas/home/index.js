@@ -25,7 +25,7 @@ import Brubank from '../../components/images/brubank.png'
 function Home(){ 
     const [resenas, setResena] = useState([])
     const [loading, setLoading] = useState(false)
-    const [pedido, setPedido] = useState({})
+    const [pedido, setPedido] = useState(false)
     useEffect(()=>{
         coments(setLoading,setResena)
     },[])
@@ -172,21 +172,23 @@ function Home(){
             <h1>Rastreador</h1>
             <div className="Buscador">
                 <input type="text" placeholder="Introduce el ID de tu orden aqui" onChange={(e)=>rastrearPedido(e.target.value,setPedido)} onKeyUp={(e)=>rastrearPedido(e.target.value,setPedido)}/>
-            <div className="ResultadoRastreador">
+            {
+                pedido?
+                <div className="ResultadoRastreador">
             
             <h2>{pedido.status}</h2>
                <p>
-                   <span>ID:</span> 0000000004
+                   <span>ID:</span> {pedido.idPedido}
                    <br/>
-                   <span>Remitente:</span> Leonardo medina
+                   <span>Remitente:</span> {pedido.nombreUsuario}
                    <br/>
-                   <span>Deposito:</span> 50 dolares americanos
+                   <span>Deposito:</span> {pedido.montoDeposito}
                    <br/>
-                   <span>Destinatario</span> jesus medina
-                   <br/>
-                   <span>Monto</span> 150.000BSF
+                   <span>Moneda</span>{pedido.monedaDeposito}
                </p>
-               </div>
+               </div>:null
+            }
+            
                 <Link to='/' className="btnGreen">
                     Rastrear orden
                 </Link>

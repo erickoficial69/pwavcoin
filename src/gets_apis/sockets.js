@@ -37,8 +37,8 @@ const addPais = async (data,setLoading,setOpenTab) =>{
     setLoading(true)
     const socket = io(devServer)
     
-    await socket.emit('newPais',data)
-    await socket.on('newPais',mensaje=>{
+    socket.emit('newPais',data)
+    socket.on('newPais',mensaje=>{
         if(mensaje==='ok'){
              setLoading('cargado')
              setOpenTab('cerrado')
@@ -69,7 +69,7 @@ const deletePais = async (data) =>{
     }else{
        const socket = io(devServer)
     
-        await socket.emit('deletePais',data)
+        socket.emit('deletePais',data)
         socket.on('deletePais',mensaje=>{
             if(!('Notification' in window) || !('serviceWorker' in navigator)){
                 
@@ -106,7 +106,7 @@ const newOfert = async (data,setLoading,setActiveAlert,btn) =>{
 
     const socket = io(devServer)
     
-    await socket.emit('newPedido',datosPedido)
+    socket.emit('newPedido',datosPedido)
 
     socket.on('newPedido', data=>{
             setLoading(data)
@@ -163,7 +163,7 @@ const notificacioNoticias = ()=>{
 }
 async function pedidos(id,setTabla,limit,setLoading){
     setLoading(true)
-    const socket = await io(devServer)
+    const socket = io(devServer)
     const query = {
         idUsuario:id,
         limit

@@ -355,7 +355,8 @@ const savePhoto = async(result,idUsuario,setLoading)=>{
 
 const rastrearPedido = async(idPedido,setPedido)=>{
     const insert = await Axios.post(`${devServer}/rastrearpedido`,{idPedido})
-    const rs = insert.data
+    const rs = insert.
+    console.log(rs)
     setPedido(rs)
 }
 
