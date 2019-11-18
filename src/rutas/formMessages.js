@@ -7,7 +7,7 @@ const fecha ={
     hora:datosFecha.toLocaleDateString()
 }
 const FormMessage = (props)=>{
-    const {setModal, modal, idRemitente,remitente,idDestinatario,destinatario} = props
+    const {setModalMessage, modalMessage, idRemitente,remitente,idDestinatario,destinatario} = props
 
     const captureMessage= async e =>{
         e.preventDefault()
@@ -22,7 +22,7 @@ const FormMessage = (props)=>{
             fecha:fecha.hora,
             mensajeStatus:'nuevo'
         }
-        sendMessage(message,setModal)
+        sendMessage(message,setModalMessage)
     }
 
     return(
@@ -52,7 +52,7 @@ const FormMessage = (props)=>{
                     <input type='hidden' name='idDestinatario' value={idDestinatario}/>
                     <input type='hidden' name='destinatario' value={destinatario} />
                 </form>
-                <span onClick={()=>{setModal(modal ? false : true)}}className="BtnCerrar1"><img src={cerrarBtn} alt=""/></span>
+                <span onClick={()=>{setModalMessage(modalMessage ? false : true)}}className="BtnCerrar1"><img src={cerrarBtn} alt=""/></span>
                 </article>
             </div>
         </Fragment>

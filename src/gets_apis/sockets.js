@@ -305,14 +305,15 @@ async function messages(usuario,setMessages,setCount){
         }  
     })
 }
-const sendMessage=async(message,setModal)=>{
+const sendMessage=async(message,setModalMessage)=>{
     try{
       const sendMessage = await Axios.post(`${devServer}/savemessage`,message)
       const response = await sendMessage.data
+      console.log(response)
       if(response==='mensaje enviado'){
           const socket = io(devServer)
           socket.emit('messages',message)
-          setModal(false)
+          setModalMessage(false)
       }
     }
     catch(e){
