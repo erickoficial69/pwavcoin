@@ -37,7 +37,7 @@ function PwaFeactures(){
             </div>)
             }) 
         } 
-    })
+    },[])
     const activateN = async ()=>{
         const sw = await navigator.serviceWorker.getRegistration()
         await Notification.requestPermission()
