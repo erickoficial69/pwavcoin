@@ -17,6 +17,8 @@ import User from './rutas/dashboard/user.js'
 import Users from './rutas/dashboard/users.js'
 import ProfileSettings from './rutas/dashboard/configuraciones'
 import Resenas from './rutas/dashboard/resenas'
+import Recover from './sesiones/recover/index'
+import UpdatePass from './sesiones/recover/updatePass'
 
 function Logged(){
     return <Redirect to='/dashboard'/>
@@ -49,6 +51,8 @@ function App(){
                         <Route exact path="/Dashboard/AddPais" component={AddPais}/>
                         <Route exact path="/Dashboard/User/:id?" component={User}/>
                         <Route exact path="/Dashboard/Users" component={Users}/>
+                        <Route exact path="/Recover/:service?" component={Recover}/>
+                        <Route exact path="/UpdatePass/:token?" component={UpdatePass}/>
                         <Route exact path="/Dashboard/ProfileSettings/:id" component={ProfileSettings}/>
                         <Route exact path="/Dashboard/VerifyOrder/:item?/:idUser?/:rank?" component={VerifyOrder}/>
                         <Route  path="/Dashboard/History/:idUser/:rango?" component={History}/>
