@@ -85,7 +85,7 @@ const Headerdashboard = (props)=>{
                     {user.rango !== 'corresponsal' ?<Link onClick={show} to="/Dashboard/BankAcounts">Cuentas Bancarias</Link>:null}
                     {user.rango !== 'corresponsal' ?<Link onClick={show} to="/Dashboard/AddBanks">Agregar Cuentas Bancarias</Link>:null}
                     {user.rango === 'cliente'?( <Link onClick={show} to="/Dashboard/NewOrder">Nueva Orden</Link>):null}
-                    {user.rango === 'administrador'?( <Link onClick={show} to="/Dashboard/resenas">Reseñas</Link>):null}
+                    {user.rango === 'administrador'?( <Link onClick={show} to="/Dashboard/resenas">Resenas</Link>):null}
                     {<Link onClick={show} to={`/Dashboard/History/${user.idUsuario}/${user.rango}`}>Historial</Link>}
                     {user.rango === 'administrador' ?( <Link onClick={show} to="/Dashboard/AddPais">Administrar de monedas</Link>):null}
                     {user.rango !== 'cliente' ?( <Link onClick={show} to="/Dashboard/Users">Control de usuarios</Link>):null}
