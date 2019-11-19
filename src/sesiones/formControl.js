@@ -96,7 +96,7 @@ function FormSesion(props){
                     </div>
                     {verify === 'no' ? <span className='btnRed BTN'>correo ocupado</span>:
                     loading2?<span className='btnBlue BTN'>Cargando</span>:
-                    <button className='RegistrarBTN btnGreen BTN'>Registrate</button>}
+                    <button className='RegistrarBTN btnGreen BTN' disabled={disabled}>Registrate</button>}
                     </div>
                         </Fragment>
                     )
