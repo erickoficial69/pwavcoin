@@ -38,11 +38,13 @@ function PwaFeactures(){
             }) 
         } 
     },[])
+
+    
     const activateN = async ()=>{
         const sw = await navigator.serviceWorker.getRegistration()
         await Notification.requestPermission()
         if(sw){
-            sw.sendNotification('mensaje recivido',{
+            sw.showNotification('mensaje recivido',{
                 body:'has recivido un mensaje'
             })
         }else{

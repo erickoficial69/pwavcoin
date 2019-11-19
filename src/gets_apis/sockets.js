@@ -287,7 +287,7 @@ async function messages(usuario,setMessages,setCount){
            if(status.mensajeStatus==='nuevo'){
                  suma++
                 if(sw){
-                    sw.sendNotification(status.titulo,{
+                    sw.showNotification(status.titulo,{
                         body:status.body,
                         icon:'/ico.png'
                     })
