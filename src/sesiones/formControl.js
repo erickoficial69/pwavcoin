@@ -10,10 +10,21 @@ function FormSesion(props){
     const [loading, setLoading] = useState('')
     const [loading2, setLoading2] = useState(false)
     const [verify, setVerify] = useState('')
+    const [pass,setPass] = useState('')
+
     const mostrar = ()=>{
         const register = document.querySelector('.BtnSinUp')
         register.classList.toggle('Cambio')
     }
+
+    const verifyPass = (e)=>{
+        if(pass !== e.target.value){
+            setDisabled(true)
+        }else{
+            setDisabled(false)
+        }
+    }
+
     const startLogin = event => login(event, setLoading, setOpen, setSesion)
     const startVerify = e =>verifyMail(e,setVerify,setLoading2)
     const startRegister = async e =>{
@@ -67,11 +78,11 @@ function FormSesion(props){
                    </div>
                    <div className="CampoFormulario">
                       <label  className="Requerido">contraseña</label>
-                       <input name='password' required type="password" placeholder="*****"/>
+                       <input name='password' required type="password" onKeyUp={(e)=>setPass(e.target.value)} onChange={(e)=>setPass(e.target.value)} placeholder="*****"/>
                    </div>
                    { <div className="CampoFormulario">
-                      <label className="Requerido" >Confirmar contraseña</label>
-                       <input type="password" placeholder="*****"/>
+                      <label className="Requerido">Confirmar contraseña</label>
+                       <input type="password" placeholder="*****" style={disabled?{border:'1px solid red'}:null} onKeyUp={verifyPass} onChange={verifyPass}  />
                    </div> }
                    <div>
                    <input type='hidden' name='rango' required value='cliente'/>
