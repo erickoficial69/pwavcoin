@@ -14,14 +14,14 @@ const sendNotification = async (mensaje)=>{
         worker.showNotification(mensaje.titulo,{
             body:mensaje.body,
             icon:'/ico.png',
-            vibrate: (200,200)
+            vibrate: [200, 100, 200, 100, 200, 100, 200]
         })
         return
     }else{
         new Notification(mensaje.titulo,{
             body:mensaje.body,
             icon:'/ico.png',
-            vibrate: (200,200)
+            vibrate: [200, 100, 200, 100, 200, 100, 200]
         })
     }
 }
@@ -289,13 +289,15 @@ async function messages(usuario,setMessages,setCount){
                 if(sw){
                     sw.showNotification(status.titulo,{
                         body:status.body,
-                        icon:'/ico.png'
+                        icon:'/ico.png',
+                        vibrate: [200, 100, 200, 100, 200, 100, 200]
                     })
                     
                 }else{
                     new Notification(status.titulo,{
                         body:status.mensaje,
-                        icon:'/ico.png'
+                        icon:'/ico.png',
+                        vibrate: [200, 100, 200, 100, 200, 100, 200]
                     })
                 }
                 setCount(suma)

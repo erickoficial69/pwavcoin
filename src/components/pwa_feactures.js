@@ -45,11 +45,13 @@ function PwaFeactures(){
         await Notification.requestPermission()
         if(sw){
             sw.showNotification('mensaje recivido',{
-                body:'has recivido un mensaje'
+                body:'has recivido un mensaje',
+                vibrate: [200, 100, 200, 100, 200, 100, 200]
             })
         }else{
             new Notification('mensaje recivido',{
-                body:'has recivido un mensaje'
+                body:'has recivido un mensaje',
+                vibrate: [200, 100, 200, 100, 200, 100, 200]
             })
         }
     }
