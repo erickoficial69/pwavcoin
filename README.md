@@ -1,3 +1,4 @@
-Plantilla PWA con React, react-router-dom, react-app-rewired
+Pwa Vcoin transfer
+url https://vcointransfers.com
 
-Service worker implementado por workbox, utilizando react-app-rewired para rebuild de la app
+Progressive web app realizada con React js

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .CalculadoraOrden{
     width: 500px;
@@ -12,4 +13,20 @@
 }
 .container{
     text-align: left;
+=======
+
+.CalculadoraOrden{
+    width: 500px;
+    margin-top: 20% ;
+    margin: 0 auto;
+}
+@media(max-width:500px){
+    .CalculadoraOrden{
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+.container{
+    text-align: left;
+>>>>>>> 4db5092d6467c836177423a26bfe47beb4295217
 }
