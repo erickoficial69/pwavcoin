@@ -11,6 +11,7 @@ function FormSesion(props){
     const [loading2, setLoading2] = useState(false)
     const [verify, setVerify] = useState('')
     const [pass,setPass] = useState('')
+    const [disabled,setDisabled] = useState(false)
 
     const mostrar = ()=>{
         const register = document.querySelector('.BtnSinUp')
