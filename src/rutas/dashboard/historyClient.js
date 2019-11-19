@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from'react'
+import React, {useEffect,useState,useLayoutEffect,Fragment} from'react'
 import {Link} from 'react-router-dom'
 import {updatePedido,deletePedido,pedidos} from '../../gets_apis/sockets'
 import {downloadPdf} from '../../gets_apis/api_sesion'
@@ -11,44 +11,40 @@ import waiting from '../../svg/esperar.svg'
 import Loading2 from '../../components/loading/loading2'
 import CancelMessage from '../cancelMessage'
 
+const HistoryClient = (props)=>{
+    const {usuario,idUser} = props
+    const [tabla, setTabla] = useState([{}])
+    const [limit, setLimit] = useState(31)
+    const [loading,setLoading] = useState(true)
+    const [loadPdf, setLoadPdf] = useState(false)
+    const [modal,setModal] = useState(false)
 
-const PedidosCliente = (props)=>{
-    
-        const {typeUser} = props
-        const [tabla, setTabla] = useState([{}])
-        const [limit, setLimit] = useState(31)
-        const [loading,setLoading] = useState(true)
-        const [modal,setModal] = useState(false)
-        const [loadPdf, setLoadPdf] = useState(false)
-
-       const showModal = e =>{
-            if(e.target.attributes.status.textContent === 'cancelada'){
-                
-                setModal(true)
-                return 
-            }else{
-                updatePedido(e.target.attributes)
-            }
+    const showModal = e =>{
+        if(e.target.attributes.status.textContent === 'cancelada'){
             
-            return
+            setModal(true)
+            return 
+        }else{
+            updatePedido(e.target.attributes)
         }
-       const download=async(e)=>{
+        
+        return
+    }
+
+    const download=async(e)=>{
         setLoadPdf(true)
         downloadPdf(e,setLoadPdf)
         }
        const show = e =>{
            e.target.classList.toggle('detalles')
        }
+    useLayoutEffect(()=>{
+        pedidos(idUser,setTabla,limit,setLoading)
+    },[limit])
 
-        useEffect(()=>{
-                pedidos(typeUser.idUsuario,setTabla,limit,setLoading)
-        },[limit,typeUser.idUsuario])
- return(
-        <Fragment>  
-            
-                <h1>Ultimos pedidos</h1>
-                
-        <section className="table">
+      return(
+          <div className='container'>
+            <section className="table">
             <div className="thead">
                 <h2 className="IDth">ID</h2>
                 <h2 className="Fechath">Fecha</h2>
@@ -59,7 +55,7 @@ const PedidosCliente = (props)=>{
             <div className="tbody">
                     { tabla.map((items,i)=>{
                         
-                         return items.status==='pagada'||items.status==='abierta'||items.status==='aceptada'?(
+                         return items.status==='completada'||items.status==='cancelada'||items.status==='rechazada'?(
                             <span key={i} className="tr">
                                     <div className="td IDtr">
                                         {loading?<Loading2/>:items.idPedido}
@@ -75,46 +71,10 @@ const PedidosCliente = (props)=>{
                                             {loading?<Loading2/>:items.montoRetiro} 
                                         </span>
                                     </div>
-                                     <p className="status">
-                                            {loading?<Loading2/>:items.status}
-                                    </p>
-                                
-                                    {
-                                        items.status === 'aceptada'?(
-                                            loading?<Loading2/>:<Link to={`/Dashboard/VerifyOrder/${items.idPedido}/${items.idUsuario}`}>
-                                                <img src={palometa} alt=""/>
-                                            </Link>
-                                        ):items.status==='pagada'?(
-                                            <img src={waiting} alt='esperando por administrador'/>
-                                        ):items.status==='abierta'?(
-                                            <img src={waiting} alt='esperando '/>
-                                            ):null
-                                    }
                                     
-                                    {
-                                        items.status !=='pagada'?(
-                                            loading?<Loading2/>:
-                                            <Fragment>
-                                                <img onClick={showModal}
-                                                src={cerrarDetalles}
-                                                status='cancelada'
-                                            alt=""/>
-                                            
-                                            {modal?<CancelMessage
-                                                modal={modal}
-                                                setModal={setModal}
-                                                deletePedido={deletePedido}
-                                                sesionUser={typeUser}
-
-                                                idPedido={items.idPedido}
-                                                status='cancelada'
-                                                
-                                                />:null} 
-                                            </Fragment>
-                                             
-                                            
-                                        ):null
-                                    }
+                                        <p className="status">
+                                            {loading?<Loading2/>:items.status}
+                                        </p>
        
                             { loading?<Loading2/>:<img  src={detalles} alt="" id="cerrar" onClick={show}/>}
 
@@ -156,7 +116,7 @@ const PedidosCliente = (props)=>{
                                         <br/>
                                         <span>Tipo de cuenta:</span>{items.tipoCuenta}
                                         <br/>
-                                        <span>Numero de cuenta:</span> {items.numeroCuenta}
+                                        <span>Numero de cuenta:</span>{items.numeroCuenta}
                                     </p>
                                 </div>
                                 <span>
@@ -171,19 +131,15 @@ const PedidosCliente = (props)=>{
                                         </span>
                                        
                                     </p>
-                                    <p>
                                      Operador: <span>
                                         {!items.nombreOperador?' ':items.nombreOperador}
                                         </span>
-                                        </p>
                                 </span>
                                 <br/>
                                 <span>
                                    <p>
                                    referencia bancaria: <span>
-                                   {
-                                    items.referenciaRetiro?items.referenciaRetiro:'por definir'
-                                    }
+                                           Definir por administrador
                                         </span>
                                     </p>
                                     <p>
@@ -206,7 +162,8 @@ const PedidosCliente = (props)=>{
                     }
               </div>
               
-        </section> 
+        </section>
+
         <button
               style={
                   {
@@ -218,9 +175,9 @@ const PedidosCliente = (props)=>{
                onClick={()=>setLimit(limit+31)}>
                   
                   mostrar más</button> 
-                 
-        </Fragment>   
-        ) 
+
+          </div>
+      )
 } 
 
-export default PedidosCliente
+export default HistoryClient

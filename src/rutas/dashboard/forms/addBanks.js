@@ -5,7 +5,7 @@ import Loading from '../../../components/loading'
 import './addBanks.css'
 
 function Redir(){
-    return<Redirect to='/Dashboard/BankAcounts'/>
+    return<Redirect to='/Dashboard'/>
 }
 const AddBanks = (props)=>{
     const {propietario} = props.match.params
@@ -41,7 +41,8 @@ const AddBanks = (props)=>{
         setUsuario(getUser)
         imgPaises(setPaises)
     },[])
-    return(
+    if(sessionStorage.userSesion){
+        return(
             <div className='container'>
                 <article class="AgregarBanco Cartas">
                 <h2>Informacion de de cuenta</h2><br/>
@@ -102,6 +103,8 @@ const AddBanks = (props)=>{
             </article>
             </div>        
     )
+    }
+    return null
 }
 
 export default AddBanks

@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react'
+import React, {useState, Fragment, useEffect} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import {AlertaRoja, Alerta} from '../components/alerts/alerts'
 
@@ -12,12 +12,10 @@ function BtnLogin(props){
     const controller =()=>{
         ctrl(false)
     }
-    const logout = async ()=>{
-        await sessionStorage.removeItem('userSesion')
+    const logout = ()=>{
         ctrl(false)
         setSesion(false)
         setOpen(false)
-        window.location = '/'
     }
 
         return !sesion ?(
@@ -37,7 +35,7 @@ function BtnLogin(props){
                 <Link onClick={controller} to='/Dashboard'>
                     Dashboard
                 </Link>
-            <Link className='btnCancel' onClick={logout} to='/Dashboard'>
+            <Link className='btnCancel' to='/Logout'>
                 Logout
             </Link>
         </Fragment> 

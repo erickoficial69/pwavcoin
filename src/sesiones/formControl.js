@@ -1,5 +1,4 @@
-import React, {useState, Fragment, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import React, {useState, Fragment, useEffect,useLayoutEffect} from 'react'
 import './formSesion.css'
 import {registerUser, login, verifyMail,getBank} from '../gets_apis/api_sesion'
 import {newOfert} from '../gets_apis/sockets'
@@ -11,20 +10,6 @@ function FormSesion(props){
     const [loading, setLoading] = useState('')
     const [loading2, setLoading2] = useState(false)
     const [verify, setVerify] = useState('')
-    const [pass,setPass] = useState('')
-    const [disabled,setDisabled] = useState(false)
-
-    const loadPass = (e)=>{
-        setPass(e.target.value)
-    }
-    const verifyPass = (e)=>{
-        if(pass !== e.target.value){
-            setDisabled(true)
-        }else{
-            setDisabled(false)
-        }
-    }
-
     const mostrar = ()=>{
         const register = document.querySelector('.BtnSinUp')
         register.classList.toggle('Cambio')
@@ -82,24 +67,24 @@ function FormSesion(props){
                    </div>
                    <div className="CampoFormulario">
                       <label  className="Requerido">contraseña</label>
-                       <input name='password' required type="password" onKeyUp={loadPass} onChange={loadPass} placeholder="*****"/>
+                       <input name='password' required type="password" placeholder="*****"/>
                    </div>
-                   <div className="CampoFormulario">
+                   { <div className="CampoFormulario">
                       <label className="Requerido" >Confirmar contraseña</label>
-                       <input type="password" style={disabled?{border:'1px solid red'}:null} onKeyUp={verifyPass} onChange={verifyPass} placeholder="*****"/>
-                   </div>
+                       <input type="password" placeholder="*****"/>
+                   </div> }
                    <div>
                    <input type='hidden' name='rango' required value='cliente'/>
                     {
                             loading2? <Loading/> : null
                     }
-                    <div>
-                        {/* <input type='checkbox' name='faqs' id='faqs'/>
-                        <label for='faqs'>Aceptar terminos y condiciones</label> */}
+                    <div className="Terminos">
+                        <input type='checkbox' name='faqs' id='faqs'/>
+                        <label htmlFor='faqs'>aceptar terminos y condiciones</label> 
                     </div>
                     {verify === 'no' ? <span className='btnRed BTN'>correo ocupado</span>:
                     loading2?<span className='btnBlue BTN'>Cargando</span>:
-                    <button disabled={disabled} className='btnGreen BTN'>Registrate</button>}
+                    <button className='RegistrarBTN btnGreen BTN'>Registrate</button>}
                     </div>
                         </Fragment>
                     )
@@ -126,7 +111,7 @@ function FormSesion(props){
                    <div>
                    <input type="submit" className="btnBlue BTN" value="Iniciar Sesion"/>
                    </div>
-                   <Link to='/Recover/recover' onClick={()=>setOpen(false)} >¿olviddo su contraseña?</Link>
+                   <p>¿olviddo su contraseña?</p>
                    </form>
                </div>
                 <span onClick={()=>{setOpen(open ? false : true)}}className="BtnCerrar"><img src={cerrarBtn} alt=""/></span>
@@ -154,7 +139,7 @@ function FormPedidos(props){
           setMostrar(false)
       }
       setCliente(user)
-    },[open])
+    },[])
     
     return open === true ?(
         <div id='containerForm'>
@@ -162,7 +147,7 @@ function FormPedidos(props){
                 <article class="ConfirmarOrden Cartas">
                 <h2>Información de orden</h2><br/>
                 <form  method='post' className='formPedidos' onSubmit={startOfert}>
-                <div>
+                <div className="Lista">
                     <p>
                         <span>Monto depositado:</span> {formula.deposito}
                         <br/>
@@ -190,7 +175,7 @@ function FormPedidos(props){
                 </div>
                 {
                    mostrar.titular?(
-                        <div>
+                        <div className="Lista">
                             <h2>{mostrar.paisBanco?mostrar.paisBanco:''}</h2>
                     <p>
                         <span>Tutular:</span> {mostrar.titular?mostrar.titular:''}
@@ -244,11 +229,12 @@ const FormRegisterUser = (props)=>{
     const {modalReg, setModalReg, idOperador} = props
     const [loading2, setLoading2] = useState(false)
     const [verify, setVerify] = useState('')
+    const [ctrl, setCtrl] = useState(false)
 
     const startVerify = e =>verifyMail(e,setVerify,setLoading2)
     const startRegister = async e =>{
         e.preventDefault()
-        registerUser(e, setLoading2,setModalReg)
+        registerUser(e, setLoading2,setModalReg,setCtrl)
         return document.querySelector('#reg').reset()
     }
 useEffect(()=>{

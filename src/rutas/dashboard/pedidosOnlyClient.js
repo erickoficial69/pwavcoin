@@ -228,9 +228,6 @@ const PedidosOnlyClient = (props)=>{
                                         <br/>
                                         <span>Doc. Identidad:</span> {items.dni}
                                         <br/>
-                                        <span>Direccion:</span> {items.direccion}
-                                        <br/>
-                                        
                                         <span>Correo:</span> {items.correo}
                                         <br/>
                                         <span>Refenecia Deposito:</span> {!items.referenciaDeposito?'Por Definir':items.referenciaDeposito}

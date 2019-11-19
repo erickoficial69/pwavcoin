@@ -37,8 +37,8 @@ const addPais = async (data,setLoading,setOpenTab) =>{
     setLoading(true)
     const socket = io(devServer)
     
-    await socket.emit('newPais',data)
-    await socket.on('newPais',mensaje=>{
+    socket.emit('newPais',data)
+    socket.on('newPais',mensaje=>{
         if(mensaje==='ok'){
              setLoading('cargado')
              setOpenTab('cerrado')
@@ -69,7 +69,7 @@ const deletePais = async (data) =>{
     }else{
        const socket = io(devServer)
     
-        await socket.emit('deletePais',data)
+        socket.emit('deletePais',data)
         socket.on('deletePais',mensaje=>{
             if(!('Notification' in window) || !('serviceWorker' in navigator)){
                 
@@ -106,7 +106,7 @@ const newOfert = async (data,setLoading,setActiveAlert,btn) =>{
 
     const socket = io(devServer)
     
-    await socket.emit('newPedido',datosPedido)
+    socket.emit('newPedido',datosPedido)
 
     socket.on('newPedido', data=>{
             setLoading(data)
@@ -163,7 +163,7 @@ const notificacioNoticias = ()=>{
 }
 async function pedidos(id,setTabla,limit,setLoading){
     setLoading(true)
-    const socket = await io(devServer)
+    const socket = io(devServer)
     const query = {
         idUsuario:id,
         limit
@@ -305,14 +305,15 @@ async function messages(usuario,setMessages,setCount){
         }  
     })
 }
-const sendMessage=async(message,setModal)=>{
+const sendMessage=async(message,setModalMessage)=>{
     try{
       const sendMessage = await Axios.post(`${devServer}/savemessage`,message)
       const response = await sendMessage.data
+      console.log(response)
       if(response==='mensaje enviado'){
           const socket = io(devServer)
           socket.emit('messages',message)
-          setModal(false)
+          setModalMessage(false)
       }
     }
     catch(e){
@@ -365,4 +366,22 @@ const coments=(setLoading,setComents)=>{
            setComents(data)
     })
   }
-export {paises,pedidos, newOfert, pedidosAdministrador,updatePedido,updatePedidoAdm,notificationPedido,addPais,deletePais,updatePais,notificacioNoticias,notificationtoOperador,messages,sendMessage,updateMessage,deleteMessage,deletePedido,sendComent,coments}
+  const comentsAdm=(setLoading,setComents)=>{
+    setLoading(true)
+  const socket=io(devServer)
+
+  socket.on('comentsAdm',data=>{
+         setLoading(false)
+         setComents(data)
+  })
+}
+  const updateComent=(setLoading,data)=>{
+      setLoading(true)
+  const socket=io(devServer)
+
+  socket.emit('updateComent',data)
+  socket.on('updateComent',mensaje=>{
+    setLoading(false)
+  })
+}
+export {paises,pedidos, newOfert, pedidosAdministrador,updatePedido,updatePedidoAdm,notificationPedido,addPais,deletePais,updatePais,notificacioNoticias,notificationtoOperador,messages,sendMessage,updateMessage,deleteMessage,deletePedido,sendComent,coments,updateComent,comentsAdm}

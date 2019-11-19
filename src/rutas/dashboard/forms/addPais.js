@@ -1,4 +1,4 @@
-import React, {useState,useLayoutEffect} from 'react'
+import React, {useState,useLayoutEffect,useEffect} from 'react'
 import {addPais} from '../../../gets_apis/sockets'
 import {imgPaises,dataPais} from '../../../gets_apis/api_sesion'
 import TazaActual from '../tazaActual'
@@ -18,7 +18,7 @@ const AddPais = ()=>{
         shortMoneda: ''
       }
     )
-
+    const [user,setUser] = useState(false)
     const setPais = async e =>{
         dataPais(setData,e.target.value)
     }
@@ -45,7 +45,13 @@ const AddPais = ()=>{
     useLayoutEffect(()=>{    
             imgPaises(setImgs)  
     },[])
-    return(
+    useEffect(()=>{
+        const login = JSON.parse(sessionStorage.userSesion)
+        setUser(login)
+    },[])
+
+    if(sessionStorage.userSesion){
+        return user.rango === 'administrador'?(
             <div className='container'>
                 <h1>Gestionar monedas</h1>
                 <div className='containerTazaActual'>
@@ -81,7 +87,9 @@ const AddPais = ()=>{
             </form>
             </div>  
               
-    )
+    ):<div className='container'><h1>No estas autorizado</h1></div>
+    }
+    return null
 }
 
 export default AddPais

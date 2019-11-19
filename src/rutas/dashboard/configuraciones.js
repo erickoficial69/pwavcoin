@@ -1,6 +1,6 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect,useState,useLayoutEffect} from 'react'
 import './user.css'
-import {getOneUser,updateOneUser,savePhoto} from '../../gets_apis/api_sesion'
+import {getOneUser,updateOneUser,savePhoto,updatePhoneNumber} from '../../gets_apis/api_sesion'
 import seguro from '../../svg/metodoSeguro.svg'
 import './configuraciones.css'
 import axios from 'axios'
@@ -13,6 +13,7 @@ function ProfileSettings(props){
     const {id} = props.match.params
     const [user, setUser] = useState({})
     const [loading,setLoading] = useState(false)
+    const [sesion, setSesion] = useState(false)
     
     const updatePersonalInfo = async e =>{
         e.preventDefault()
@@ -26,6 +27,7 @@ function ProfileSettings(props){
             password:e.target.password.value,
         }
         updateOneUser(datos,setLoading)
+        setUser(JSON.parse(sessionStorage.userSesion))
     }
     
     const updatePhoto = async e =>{
@@ -36,14 +38,35 @@ function ProfileSettings(props){
         const result = sendFile.data
         savePhoto(result,id,setLoading,setUser)
         getOneUser(setUser,id,setLoading)
-        return
+        
     }
 
-    useEffect(()=>{
-        getOneUser(setUser,id,setLoading)
-    },[id])
+    const updatePhone = async e =>{
+        const data ={
+            numero:e.target.value,
+            id:id
+        }
+        updatePhoneNumber(data,setLoading)
+        setTimeout(() => {
+            getOneUser(setUser,id,setLoading)
+        }, 2000);
+        setUser(JSON.parse(sessionStorage.userSesion))
+    }
 
-    return(
+    useLayoutEffect(()=>{
+        getOneUser(setUser,id,setLoading)
+    },[])
+    
+    useEffect(()=>{
+        setUser(JSON.parse(sessionStorage.userSesion))
+        if(sessionStorage.userSesion){
+            setSesion(true)
+        }else{
+            setSesion(false)
+        }
+    })
+
+    return sesion?(
         <div className='container'>
             <article className="Configuracion Cartas">
         <h1>configurar cuenta</h1>
@@ -81,8 +104,8 @@ function ProfileSettings(props){
             <form >
                 <div className="CampoFormulario">
                     <label className="Requerido"> numero de telefono </label>
-
-                   <input type="text" name='numero' defaultValue={user.telefono} readOnly/>
+                    {loading?<label>actualizando...</label>:null}
+                   <input type="text" name='numero' defaultValue={user.telefono} onKeyUp={updatePhone} onChange={updatePhone}/>
                    
                 </div>
                 <div className="CampoFormulario">
@@ -104,9 +127,10 @@ function ProfileSettings(props){
                <img  src={seguro} alt=""/>
            </div>
             </div>
+            
         </div>
         </article>
         </div>
-    )
+    ):null
 }
 export default ProfileSettings
