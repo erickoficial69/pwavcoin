@@ -128,7 +128,7 @@ function notificationPedido(){
             if(!('Notification' in window) || !('serviceWorker' in navigator)){
                 return
             }
-            showNotification(mensaje)  
+            sendNotification(mensaje)  
         }
     })
 }
@@ -145,7 +145,7 @@ function notificationtoOperador(){
             if(!('Notification' in window) || !('serviceWorker' in navigator)){
                 return 
             }
-            showNotification(mensaje)  
+            sendNotification(mensaje)  
         }
     })
 }
@@ -157,7 +157,7 @@ const notificacioNoticias = ()=>{
             if(!('Notification' in window) || !('serviceWorker' in navigator)){
                 
             }else{
-                showNotification(mensaje) 
+                sendNotification(mensaje) 
             }
     })
 }
