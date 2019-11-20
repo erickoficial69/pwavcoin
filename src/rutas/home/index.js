@@ -99,25 +99,25 @@ function Home(){
             <h1>Bancos Para depositos</h1>
             <article>
                 <div className="Cartas">
-                    <img src={BancoBci}alt=""/>
+                    <img src={`${staticServer}/images/BancoBci.png`}alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BancoBrou} alt=""/>
+                    <img src={`${staticServer}/images/BancoBrou.jpg`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BancoEstado} alt=""/>
+                    <img src={`${staticServer}/images/BancoEstado.jpg`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={mercadoPago} alt=""/>
+                    <img src={`${staticServer}/images/mercadopago.jpg`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={Brubank} alt=""/>
+                    <img src={`${staticServer}/images/brubank.png`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={Skrill} alt=""/>
+                    <img src={`${staticServer}/images/skrill.png`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BitCoin} alt=""/>
+                    <img src={`${staticServer}/images/bitcoin.png`} alt=""/>
                 </div>
                 <div className="Cartas">
                     <img src={Bancolombia} alt=""/>
