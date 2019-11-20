@@ -1,4 +1,5 @@
 import React, {useState, Fragment, useEffect,useLayoutEffect} from 'react'
+import {Link} from 'react-router-dom'
 import './formSesion.css'
 import {registerUser, login, verifyMail,getBank} from '../gets_apis/api_sesion'
 import {newOfert} from '../gets_apis/sockets'
@@ -123,7 +124,7 @@ function FormSesion(props){
                    <div>
                    <input type="submit" className="btnBlue BTN" value="Iniciar Sesion"/>
                    </div>
-                   <p>¿olviddo su contraseña?</p>
+                   <p onClick={()=>{setOpen(open ? false : true)}} ><Link to='/Recover/recover'>¿olviddo su contraseña?</Link> </p>
                    </form>
                </div>
                 <span onClick={()=>{setOpen(open ? false : true)}}className="BtnCerrar"><img src={cerrarBtn} alt=""/></span>
