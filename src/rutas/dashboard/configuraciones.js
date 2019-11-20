@@ -5,7 +5,7 @@ import seguro from '../../svg/metodoSeguro.svg'
 import './configuraciones.css'
 import axios from 'axios'
 import avatar from '../../svg/usuario.svg'
-import Loading from '../../components/loading/loading'
+import Loading from '../../components/loading/'
 
 import {servers}from '../../keys'
 const {staticServer} = servers
