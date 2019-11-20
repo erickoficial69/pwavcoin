@@ -93,7 +93,7 @@
 }
 .Notificaciones2{
     position: fixed;
-    bottom: 150px;
+    bottom: 160px;
     right: 0px;
     display: flex;
     flex-flow: column;
