@@ -265,7 +265,12 @@ const PedidosAdm = (props)=>{
                     }
               </div>
         </section> 
-        <button className='btnBlue' onClick={()=>setLimit(limit+31)}>mas</button>      
+        <button style={
+                  {
+                      
+                      margin:'3vmin',
+                  }
+              } className='btnBlue' onClick={()=>setLimit(limit+31)}>mostrar mas</button>      
         </Fragment>   
         ) 
 } 
