@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, {useState, Fragment, useEffect,useLayoutEffect} from 'react'
 import './formSesion.css'
 import {registerUser, login, verifyMail,getBank} from '../gets_apis/api_sesion'
@@ -299,7 +298,6 @@ useEffect(()=>{
     )
 }
 
-=======
 import React, {useState, Fragment, useEffect,useLayoutEffect} from 'react'
 import {Link} from 'react-router-dom'
 import './formSesion.css'
@@ -613,5 +611,4 @@ useEffect(()=>{
     )
 }
 
->>>>>>> b9f86c253df442e9073dcf34875a5fd073257066
 export {FormSesion, FormPedidos, FormRegisterUser}
