@@ -7,6 +7,10 @@ import './addBanks.css'
 function Redir(){
     return<Redirect to='/Dashboard'/>
 }
+function Redir2(props){
+    const {propietario} = props
+    return<Redirect to={`/Dashboard/NewOrder/${propietario}`}/>
+}
 const AddBanks = (props)=>{
     const {propietario} = props.match.params
     const [usuario, setUsuario] = useState(false)
@@ -98,7 +102,9 @@ const AddBanks = (props)=>{
                      }
                 </form>
                 {
-                    loading === 'registro exitoso'? <Redir/>:null
+                    loading === 'registro exitoso'? 
+                    propietario?
+                        <Redir2 propietario={propietario}/>:<Redir/>:null
                 }
             </article>
             </div>        

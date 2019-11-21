@@ -1,6 +1,5 @@
 import React, {useEffect,useState} from 'react'
 import {Link} from 'react-router-dom'
-import photo from '../../components/images/team-member01-150x150.jpg'
 import './user.css'
 import PedidosOnlyClient from './pedidosOnlyClient'
 import {getOneUser,upgradeUser,setStatusUser} from '../../gets_apis/api_sesion'
