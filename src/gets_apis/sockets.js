@@ -386,8 +386,4 @@ const coments=(setLoading,setComents)=>{
     setLoading(false)
   })
 }
-<<<<<<< HEAD
 export {paises,pedidos, newOfert, pedidosAdministrador,updatePedido,updatePedidoAdm,notificationPedido,addPais,deletePais,updatePais,notificacioNoticias,notificationtoOperador,messages,sendMessage,updateMessage,deleteMessage,deletePedido,sendComent,coments,updateComent,comentsAdm}
-=======
-export {paises,pedidos, newOfert, pedidosAdministrador,updatePedido,updatePedidoAdm,notificationPedido,addPais,deletePais,updatePais,notificacioNoticias,notificationtoOperador,messages,sendMessage,updateMessage,deleteMessage,deletePedido,sendComent,coments,updateComent,comentsAdm}
->>>>>>> b9f86c253df442e9073dcf34875a5fd073257066

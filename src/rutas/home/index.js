@@ -182,33 +182,6 @@ function Home(){
             <div className="Buscador">
                 <input type="text" placeholder="Introduce el ID de tu orden aqui" onChange={(e)=>rastrearPedido(e.target.value,setPedido)} onKeyUp={(e)=>rastrearPedido(e.target.value,setPedido)}/>
             {
-<<<<<<< HEAD
-                pedido?
-                <div className="ResultadoRastreador">
-            
-            <h2>{pedido.status}</h2>
-               <p>
-                   <span>ID:</span> {pedido.idPedido}
-                   <br/>
-                   <span>Remitente:</span> {pedido.remitente}
-                   <br/>
-                   <span>Deposito:</span> {pedido.montoDeposito}
-                   <br/>
-                   <span>monto deposito:</span> {pedido.remitente}
-                   <br/>
-                   <span>Moneda</span> {pedido.monedaDeposito}
-                   <br/>
-                   <span>Remitente:</span> {pedido.remitente}
-                   <br/>
-                   <span>Monto de retiro</span> {pedido.monedaDeposito}
-               </p>
-               </div>:null
-            }
-            
-                <Link to='/' className="btnGreen">
-                    Rastrear orden
-                </Link>
-=======
                 pedido && pedido.idPedido?
                 <div className="ResultadoRastreador">
             
@@ -229,7 +202,6 @@ function Home(){
                 </div>:null
             }
             
->>>>>>> b9f86c253df442e9073dcf34875a5fd073257066
             </div>
         </section>
     </main>
