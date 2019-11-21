@@ -5,6 +5,7 @@ import seguro from '../../svg/metodoSeguro.svg'
 import './configuraciones.css'
 import axios from 'axios'
 import avatar from '../../svg/usuario.svg'
+import Loading from '../../components/loading/'
 
 import {servers}from '../../keys'
 const {staticServer} = servers
@@ -73,9 +74,9 @@ function ProfileSettings(props){
         <div className="ActualizarDatos">
           
             <div className="Foto1">
-                {!loading?<img src={user.foto?staticServer+user.foto:avatar} alt=""/>:<img src={avatar} alt=""/>}
+                {!loading?<img src={user.foto?staticServer+user.foto:avatar} alt=""/>:<Loading />}
                 {
-                    loading?'cargando':<div className="Subir">
+                    loading?<Loading />:<div className="Subir">
                     <input type="file" name='foto' onChange={updatePhoto}/>
                 </div>
                 }

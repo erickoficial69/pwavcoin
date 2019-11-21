@@ -72,7 +72,7 @@ function Home(){
                 <p>
                     Contactanos vía WhatsApp para cotizaciones en otras monedas
                 </p>
-                <Link className="btnGreen" to='/home'>
+                <Link className="btnGreen" to='https://api.whatsapp.com/send?phone=+56959046834&text=Hola%2C+deseo+adquirir+un+soporte+con+ustedes'>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
 	 viewBox="0 0 418.135 418.135"  >
 <g>
@@ -92,32 +92,32 @@ function Home(){
 </svg>
 
         <br/>
-                    WhatsApp +58 451 58 61</Link>
+                    WhatsApp +56959046834</Link>
             </div>
         </section>
         <section className="BancosAfiliados">
             <h1>Bancos Para depositos</h1>
             <article>
                 <div className="Cartas">
-                    <img src={BancoBci}alt=""/>
+                    <img src={`${staticServer}/images/BancoBci.png`}alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BancoBrou} alt=""/>
+                    <img src={`${staticServer}/images/BancoBrou.jpg`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BancoEstado} alt=""/>
+                    <img src={`${staticServer}/images/BancoEstado.jpg`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={mercadoPago} alt=""/>
+                    <img src={`${staticServer}/images/mercadopago.jpg`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={Brubank} alt=""/>
+                    <img src={`${staticServer}/images/brubank.png`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={Skrill} alt=""/>
+                    <img src={`${staticServer}/images/skrill.png`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BitCoin} alt=""/>
+                    <img src={`${staticServer}/images/bitcoin.png`} alt=""/>
                 </div>
                 <div className="Cartas">
                     <img src={Bancolombia} alt=""/>
@@ -182,6 +182,7 @@ function Home(){
             <div className="Buscador">
                 <input type="text" placeholder="Introduce el ID de tu orden aqui" onChange={(e)=>rastrearPedido(e.target.value,setPedido)} onKeyUp={(e)=>rastrearPedido(e.target.value,setPedido)}/>
             {
+<<<<<<< HEAD
                 pedido?
                 <div className="ResultadoRastreador">
             
@@ -207,6 +208,28 @@ function Home(){
                 <Link to='/' className="btnGreen">
                     Rastrear orden
                 </Link>
+=======
+                pedido && pedido.idPedido?
+                <div className="ResultadoRastreador">
+            
+                    <h2>{pedido.status}</h2>
+                    <p>
+                        <span>ID:</span> {pedido.idPedido}
+                        <br/>
+                        <span>Remitente:</span> {pedido.remitente}
+                        <br/>
+                        <span>Moneda deposito:</span> {pedido.monedaDeposito}
+                        <br/>
+                        <span>Monto deposito:</span> {pedido.montoDeposito}
+                        <br/>
+                        <span>Moneda retiro</span> {pedido.monedaRetiro}
+                        <br/>
+                        <span>Monto de retiro</span> {pedido.montoRetiro}
+                    </p>
+                </div>:null
+            }
+            
+>>>>>>> b9f86c253df442e9073dcf34875a5fd073257066
             </div>
         </section>
     </main>

@@ -226,7 +226,7 @@ const PedidosAdm = (props)=>{
                                        <p>
                                        referencia bancaria: <span>
                                                {
-                                                   pedido.referenciaRetiro?pedido.referenciaRetiro:'Definir por administrador'
+                                                   pedido.referenciaRetiro?pedido.referenciaRetiro:'por definir'
                                                }
                                             </span>
                                         </p>
@@ -265,7 +265,12 @@ const PedidosAdm = (props)=>{
                     }
               </div>
         </section> 
-        <button className='btnBlue' onClick={()=>setLimit(limit+31)}>mas</button>      
+        <button style={
+                  {
+                      
+                      margin:'3vmin',
+                  }
+              } className='btnBlue' onClick={()=>setLimit(limit+31)}>mostrar mas</button>      
         </Fragment>   
         ) 
 } 

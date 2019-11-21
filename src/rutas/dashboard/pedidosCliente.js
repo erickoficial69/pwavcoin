@@ -181,7 +181,9 @@ const PedidosCliente = (props)=>{
                                 <span>
                                    <p>
                                    referencia bancaria: <span>
-                                           Definir por administrador
+                                   {
+                                    items.referenciaRetiro?items.referenciaRetiro:'por definir'
+                                    }
                                         </span>
                                     </p>
                                     <p>

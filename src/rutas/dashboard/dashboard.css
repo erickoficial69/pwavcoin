@@ -16,7 +16,7 @@
     text-align: right;
 }
 .btnsTabla>button{
-    margin:0 5px;
+    margin:5px;
     width:150px;
 }
 @media(max-width:1024px){

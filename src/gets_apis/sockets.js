@@ -14,14 +14,14 @@ const sendNotification = async (mensaje)=>{
         worker.showNotification(mensaje.titulo,{
             body:mensaje.body,
             icon:'/ico.png',
-            vibrate: (200,200)
+            vibrate: [200, 100, 200, 100, 200, 100, 200]
         })
         return
     }else{
         new Notification(mensaje.titulo,{
             body:mensaje.body,
             icon:'/ico.png',
-            vibrate: (200,200)
+            vibrate: [200, 100, 200, 100, 200, 100, 200]
         })
     }
 }
@@ -287,15 +287,17 @@ async function messages(usuario,setMessages,setCount){
            if(status.mensajeStatus==='nuevo'){
                  suma++
                 if(sw){
-                    sw.sendNotification(status.titulo,{
+                    sw.showNotification(status.titulo,{
                         body:status.body,
-                        icon:'/ico.png'
+                        icon:'/ico.png',
+                        vibrate: [200, 100, 200, 100, 200, 100, 200]
                     })
                     
                 }else{
                     new Notification(status.titulo,{
                         body:status.mensaje,
-                        icon:'/ico.png'
+                        icon:'/ico.png',
+                        vibrate: [200, 100, 200, 100, 200, 100, 200]
                     })
                 }
                 setCount(suma)
@@ -384,4 +386,8 @@ const coments=(setLoading,setComents)=>{
     setLoading(false)
   })
 }
+<<<<<<< HEAD
 export {paises,pedidos, newOfert, pedidosAdministrador,updatePedido,updatePedidoAdm,notificationPedido,addPais,deletePais,updatePais,notificacioNoticias,notificationtoOperador,messages,sendMessage,updateMessage,deleteMessage,deletePedido,sendComent,coments,updateComent,comentsAdm}
+=======
+export {paises,pedidos, newOfert, pedidosAdministrador,updatePedido,updatePedidoAdm,notificationPedido,addPais,deletePais,updatePais,notificacioNoticias,notificationtoOperador,messages,sendMessage,updateMessage,deleteMessage,deletePedido,sendComent,coments,updateComent,comentsAdm}
+>>>>>>> b9f86c253df442e9073dcf34875a5fd073257066

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*-------------------------------------------
 -------------   TABLA GRID ------------------
 ---------------------------------------------*/
@@ -67,4 +68,122 @@ span,.tr>p{
 }
 .NombreDestino{
     padding-left: 10px;;
+=======
+/*-------------------------------------------
+-------------   TABLA GRID ------------------
+---------------------------------------------*/
+.tableres {
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 2px 2px #eaeaea;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+   width: 90%;
+}
+.theadres {
+    display: grid;
+    grid-template-columns: 10% 15% 55% 20%;
+    font-size: 100%;
+    background-color:var(--theme-color);
+    color: white;
+    overflow: hidden;
+}
+
+.theadres>h2 {
+    color: white;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.theadres,
+.tdres {
+    padding: 0.5em;
+    text-align: center;
+    font-size: 14px;
+}
+span,.trres>p{
+    font-size: 14px;
+    line-height: 1.5;
+   
+}
+.trres{
+    display: grid;
+    grid-template-columns: 10% 15% 55% 10% 5% 5%;
+    grid-auto-rows: 40px auto;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    z-index:80;
+    height: 60px;
+    overflow: hidden;
+    animation: entradatr 0.3s ease;
+}
+@keyframes entradatr{
+    0%{
+        height: 0px;
+        opacity: 0;
+    }
+    100%{
+        height: 50px;
+        opacity: 1;
+    }
+}
+.trres>img{
+    height: 20px;
+    cursor: pointer;
+}
+.trres>a>img{
+    height: 20px;
+    cursor: pointer;
+}
+.NombreDestino{
+    padding-left: 10px;;
+}
+
+@media only screen and (max-width:1024px) {
+    .tableres{
+        width: 97%;
+    }
+
+    .theadres{
+        grid-template-columns: 20% 20% 30% 30%;
+    }
+    .tdres{
+        padding: 0;
+    }
+    .trres{
+        grid-template-columns:20% 20% 30% 7% 7% 7%  ;
+        grid-column-gap: 1%;
+       
+    }
+
+    .IDthres,
+    .IDtrres,
+    .statusres{
+        display: none;
+    }
+    .trres>img{
+        height: 30px;
+        cursor: pointer;
+    }
+    .trres>a>img{
+        height: 30px;
+        cursor: pointer;
+    }
+}
+@media only screen and (max-width:720px){
+
+    .Fechath,
+    .Fechatd{
+        display: none;
+    }
+    .theadres{
+        grid-template-columns: 33% 33% 33%;
+    }
+    .trres{
+        grid-template-columns:30% 30% 11% 11% 11%  ;
+        grid-column-gap: 1%;
+       
+    }
+>>>>>>> b9f86c253df442e9073dcf34875a5fd073257066
 }

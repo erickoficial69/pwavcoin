@@ -16,7 +16,6 @@ function User(props){
     const [loading,setLoading] = useState(true)
     const [admin, setAdmin] = useState(JSON.stringify(sessionStorage.userSesion))
     const [verify,setVerify] = useState(false)
-    const [modal,setModal] = useState(false)
     const [modalMessage,setModalMessage] = useState(false)
     
     const setStatus = async e =>{
@@ -87,7 +86,7 @@ function User(props){
                 :null}
 
             {JSON.parse(sessionStorage.userSesion).rango==='administrador'?
-                <button className='btnBlue' onClick={()=>setModal(modal?false:true)} >mensaje</button>
+                <button className='btnBlue' onClick={()=>setModalMessage(modalMessage?false:true)} >mensaje</button>
                 :null}
                 
                 {user.idOperador === JSON.parse(sessionStorage.userSesion).idUsuario?<Link className='btnBlue BTN' to={`/Dashboard/AddBanks/${user.idUsuario}`} >añadir bancos</Link>:null}
