@@ -8,7 +8,7 @@ Desarrolladores:
 Jesus Medina --Diseñador Gráfico y frontend Developer
 website http://novatocreativo.com.ve
 
-Leonardo Medona --Copywraiter - Redactor - Marketer
+Leonardo Medona --Copywriter - Redactor - Marketer
 
 Erick Diaz --Desarrolador full stack
 Twitter: @erickoficial69
