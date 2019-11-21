@@ -1,0 +1,6 @@
+[1115/180217.437:ERROR:http_transport_win.cc(276)] WinHttpSendRequest: La operación se completó correctamente. (0x0)
+[1116/013100.448:ERROR:http_transport_win.cc(276)] WinHttpSendRequest: La operación se completó correctamente. (0x0)
+[1116/033159.412:ERROR:http_transport_win.cc(276)] WinHttpSendRequest: La operación se completó correctamente. (0x0)
+[1116/145508.734:ERROR:http_transport_win.cc(276)] WinHttpSendRequest: La operación se completó correctamente. (0x0)
+[1116/152204.654:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[1116/153153.391:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)

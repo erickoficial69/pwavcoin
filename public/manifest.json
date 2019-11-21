@@ -12,7 +12,7 @@
   "scope": "/",
   "display": "fullscreen",
   "orientation":"landscape-primary",
-  "theme_color": "rgb(10, 90, 130)",
+  "theme_color": "rgb(16, 108, 160)",
   "background_color": "rgb(16, 108, 160)",
   "related_applications": [],
   "prefer_related_applications": false

@@ -5,6 +5,10 @@ import './user.css'
 import PedidosOnlyClient from './pedidosOnlyClient'
 import {getOneUser,upgradeUser,setStatusUser} from '../../gets_apis/api_sesion'
 import FormMessage from '../formMessages'
+import avatar from '../../svg/usuario.svg'
+
+import {servers}from '../../keys'
+const {staticServer} = servers
 
 function User(props){
     const {id} = props.match.params
@@ -28,12 +32,12 @@ function User(props){
         verify?getOneUser(setUser,id,setLoading):getOneUser(setUser,id,setLoading)
     },[verify])
 
-    return(
+    return sessionStorage.userSesion?(
         <div className='container'>
             <h1>Planilla de Usuario</h1>
             <div className='headerUser Cartas'>
                 <div className="Foto">
-                    <img src={photo}/>
+                    <img src={user.foto?staticServer+user.foto:avatar}/>
                     <p><span>{user.idUsuario}</span></p>
                 </div>
                 <div className="DatosPersonales">
@@ -104,6 +108,6 @@ function User(props){
             }
             <PedidosOnlyClient rango={user.rango} idUsuario={user.idUsuario}/>
         </div>
-    )
+    ):null
 }
 export default User

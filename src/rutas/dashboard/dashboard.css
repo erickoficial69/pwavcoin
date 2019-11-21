@@ -3,7 +3,12 @@
     margin-top:0;
     margin-left:20%;
     padding:1vmin;
+    text-align: center;
     overflow-x:hidden;
+    text-align: center !important;
+}
+.container>p{
+    text-align: left !important;
 }
 .btnsTabla{
     width:95%;
@@ -98,8 +103,6 @@
     overflow: hidden;
    width: 90%;
 }
-    
-
 .thead {
     display: grid;
     grid-template-columns: 10% 15% 20% 30% 25%;

@@ -37,9 +37,7 @@ html{
   --cancelHover:rgb(255, 94, 0);
   --cancelClick:rgb(255, 17, 0);
 }
-body,.scroll{
-  padding-bottom:5vmin;
-}
+
 .scroll::-webkit-scrollbar{
   background:transparent;
   width:5px;
@@ -273,9 +271,13 @@ p > span {
       margin: 0 auto;
   }
   .Cambio~.SinUp{
-      height: auto;
+      height: auto !important;
   }
+ 
   .BtnLogin,.BtnSinUp{
       font-size: 18px;
+  }
+  .RegistrarBTN{
+    margin-top: 50px !important;
   }
 }

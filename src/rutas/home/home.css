@@ -64,12 +64,17 @@ header>div>h2{
     grid-template-columns: 50% 50%;
     padding: 70px 50px 30px;
     align-items: center;
+    justify-content: center;
 }
-
+.SobreNosotros>span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .SobreNosotros>span>img{
     width: 50%;
     border-radius: 10px;
-    margin-top: calc(50% - 50%);
+    margin: 0 auto;
 }
 .SobreNosotros>article>p,.SobreNosotros>article>h2{
     text-align: left;
@@ -83,8 +88,6 @@ header>div>h2{
     font-weight: bolder;
 }
 .SobreNosotros>article>p:last-child{
-    font-weight: normal;
-    font-size: 15px;
     padding: 30px 0 100px;
 }
 .SobreNosotros>div{
@@ -198,8 +201,8 @@ header>div>h2{
     margin: 0 15px;
 }
     .SobreNosotros>article>p:last-child{
-    font-weight: normal;
-    font-size: 15px;
+   
+   
     padding: 30px 0 40px;
 }
 }
@@ -266,7 +269,7 @@ header>div>h2{
         grid-row-gap: 10px;
     }
     .PorQueElegirnos>article>div{
-    width: 150px;
+    width: 160px;
         height: 165px;
     margin: 0 auto;
         font-size: 12px;
@@ -314,15 +317,17 @@ header>div>h2{
 #Resenas>div{
     width: 90%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 25px;
     grid-row-gap: 15px;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    padding-bottom: 50px;
 }
 .Resenas{
     margin: 0 auto;
+    width: 100%;
     border-radius: 10px;
     border: 2px solid #eaeaea;
     background: white;
@@ -338,19 +343,23 @@ header>div>h2{
 }
 .Resenas>img{
     width: 120px;
-    margin: 20px 10px 0 0 ;
     height: 120px;
     border-radius: 50%;
     border: 3px solid rgb(16, 108, 160,0.5);
 }
-.Resena,.Resena>p{
-    text-align: left;
+.Resenas>.Resena>p{
+    text-align: center;
     line-height: 1.5;
-    font-weight: bold;
-    padding: 10px 0;
+    width: 90%;
+    margin: 0 auto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    padding: 20px 0;
+    position: relative;
 }
 
-.Resena>span,Resena,h3{
+.Resena>span,.Resena>h3{
     text-align: left;
     text-transform: capitalize;
 }
@@ -358,9 +367,9 @@ header>div>h2{
     color: #f0ad4e;
     font-size: 24px;
 }
-@media only screen and (max-width:768px){
+@media only screen and (max-width:508px){
     #Resenas>div{
-    grid-template-columns:repeat(1, 310px);
+    grid-template-columns:repeat(1, 1fr);
     grid-column-gap: 15px;
     }
 }
@@ -369,9 +378,10 @@ header>div>h2{
 ---------------------------------------*/
 
 .Rastreador{
-    height: 350px;
+    height: auto;
     background-image: url(../../components/images/background.jpg);
     background-size: cover;
+    padding-bottom: 25px;;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
 
@@ -400,5 +410,63 @@ header>div>h2{
 }
 .Rastreador>div>a{
     width: 150px;
+    margin: 10px auto;
     text-align: center;
+}
+.ResultadoRastreador{
+    width: 350px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 2px grey;
+    animation: entradaRes 1s ease;
+}
+@keyframes entradaRes{
+    0%{
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+    }
+    100%{
+        opacity: 1;
+        height: 150px;
+    }
+}
+.ResultadoRastreador > h2 {
+        background: #106ca0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: #FFF;
+        font-size: 26px;
+        line-height: 1.5;
+    }
+    
+    .ResultadoRastreador > p {
+        width: 90%;
+        padding: 10px 20px;
+        text-align: left;
+        color: #696969;
+        text-transform: capitalize;
+        line-height: 1.5;
+    }
+    @media only screen and (max-width:500px){
+        .ResultadoRastreador{
+            width:90%;
+        }
+    }
+
+
+/*-------------------------------------
+                footer
+---------------------------------------*/
+
+.Footer{
+    height: 100px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a3a3a;
+    text-align: center;
+}
+.Footer>span>a{
+    color: rgba(255, 255, 255, 0.56);
 }

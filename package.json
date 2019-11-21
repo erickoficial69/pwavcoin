@@ -19,11 +19,12 @@
     "socket.io": "^2.2.0",
     "workbox-webpack-plugin": "^4.3.1"
   },
-  "homepage":"./",
   "scripts": {
     "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-app-rewired build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test":"node server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,8 +36,8 @@
       "not op_mini all"
     ],
     "development": [
-      "last 20 chrome version",
-      "last 20 firefox version",
+      "last 10 chrome version",
+      "last 10 firefox version",
       "last 10 safari version"
     ]
   },

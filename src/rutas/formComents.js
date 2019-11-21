@@ -17,7 +17,8 @@ const FormComents = (props)=>{
         const message={
             idRemitente:idRemitente.value,
             mensaje:mensaje.value,
-            fecha:fecha.fecha
+            fecha:fecha.fecha,
+            statusResena:'nueva'
         }
         sendComent(message,setLoading,setModalComents)
     }

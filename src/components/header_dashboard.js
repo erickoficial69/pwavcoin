@@ -1,4 +1,4 @@
-import React,{Fragment, useEffect, useState} from 'react'
+import React,{Fragment, useEffect, useState, useLayoutEffect} from 'react'
 import {Link} from 'react-router-dom'
 import './header_dashboard.css'
 import {notificationPedido, notificacioNoticias,notificationtoOperador,messages,updateMessage,deleteMessage} from '../gets_apis/sockets'
@@ -19,12 +19,11 @@ const Headerdashboard = (props)=>{
    const show = ()=>{
     document.querySelector('#navigation').classList.toggle('show')
     }
-   const logout = async () =>{
-        await sessionStorage.removeItem('userSesion')
+   const logout = () =>{
+        sessionStorage.removeItem('userSesion')
         setSesion(false)
    }
-   
-useEffect(()=>{
+   useLayoutEffect(()=>{
     const usuario = JSON.parse(sessionStorage.userSesion)
     usuario.rango==='cliente'?notificationPedido():notificationtoOperador()
     notificacioNoticias()
@@ -32,6 +31,10 @@ useEffect(()=>{
     setUser(usuario)
     secureSesion(usuario.idUsuario)
 },[])
+    useEffect(()=>{
+        const usuario = JSON.parse(sessionStorage.userSesion)
+        setUser(usuario)
+    })
     return sesion?(
        
         <Fragment>
@@ -62,14 +65,13 @@ useEffect(()=>{
                     <Link onClick={show} to="/Dashboard">Tablero</Link>
                     {user.rango !== 'corresponsal' ?<Link onClick={show} to="/Dashboard/BankAcounts">Cuentas Bancarias</Link>:null}
                     {user.rango !== 'corresponsal' ?<Link onClick={show} to="/Dashboard/AddBanks">Agregar Cuentas Bancarias</Link>:null}
-                    {
-                       user.rango === 'cliente'?( <Link onClick={show} to="/Dashboard/NewOrder">Nueva Orden</Link>):null
-                    }
-                    {<Link onClick={show} to="/Dashboard/History">Historial</Link>}
+                    {user.rango === 'cliente'?( <Link onClick={show} to="/Dashboard/NewOrder">Nueva Orden</Link>):null}
+                    {user.rango === 'administrador'?( <Link onClick={show} to="/Dashboard/resenas">Resenas</Link>):null}
+                    {<Link onClick={show} to={`/Dashboard/History/${user.idUsuario}/${user.rango}`}>Historial</Link>}
                     {user.rango === 'administrador' ?( <Link onClick={show} to="/Dashboard/AddPais">Administrar de monedas</Link>):null}
                     {user.rango !== 'cliente' ?( <Link onClick={show} to="/Dashboard/Users">Control de usuarios</Link>):null}
                     {<Link onClick={show} to={`/Dashboard/ProfileSettings/${user.idUsuario}`}>Configuración</Link>}
-                    <Link onClick={logout} to="/">Salir</Link>
+                    <Link to="/Logout">Salir</Link>
     </aside>
         </Fragment>
     ):null

@@ -1,6 +1,7 @@
-import React, {Fragment, useEffect,useState} from'react'
+import React, {Fragment, useEffect,useState, useLayoutEffect} from'react'
 import {Link,Redirect} from 'react-router-dom'
 import {coments} from '../../gets_apis/sockets'
+import {rastrearPedido} from '../../gets_apis/api_sesion'
 import './home.css'
 import Calculator from '../../components/calculator/calculator'
 import logo1 from '../../components/images/logo.png'
@@ -20,14 +21,24 @@ import mercadoPago from '../../components/images/mercadopago.jpg'
 import Skrill from '../../components/images/skrill.png'
 import BitCoin from '../../components/images/bitcoin.png'
 import Brubank from '../../components/images/brubank.png'
+import {servers} from '../../keys'
+
+const {staticServer} = servers
 
 function Home(){ 
     const [resenas, setResena] = useState([])
     const [loading, setLoading] = useState(false)
-    useEffect(()=>{
+    const [pedido, setPedido] = useState(false)
+    const [sesion, setSesion] = useState(false)
+
+    useLayoutEffect(()=>{
         coments(setLoading,setResena)
     },[])
-    return !sessionStorage.userSesion? (
+
+    useEffect(()=>{
+        setSesion(sessionStorage.userSesion)
+    })
+    return !sesion? (
         <Fragment>
             <header>
         <div>
@@ -154,14 +165,14 @@ function Home(){
                     </div>
                 </article>
                     ): resenas.map((res,i)=>{
-                    return(
+                    return res.status === 'aprobar'?(
                         <article className="Resenas">
-                            <img src={profile} alt=""/>
+                            <img src={res.foto?staticServer+res.foto:profile} alt=""/>
                             <div className="Resena">
-                                <p>{res.mensaje}</p>
+                                <p>{res.resena}</p>
                             </div>
                         </article>
-                    )
+                    ):null
                 })
                 }
             </div>
@@ -169,13 +180,40 @@ function Home(){
         <section id="Rastrear" className="Rastreador">
             <h1>Rastreador</h1>
             <div className="Buscador">
-                <input type="text" placeholder="Introduce el ID de tu orden aqui" />
+                <input type="text" placeholder="Introduce el ID de tu orden aqui" onChange={(e)=>rastrearPedido(e.target.value,setPedido)} onKeyUp={(e)=>rastrearPedido(e.target.value,setPedido)}/>
+            {
+                pedido?
+                <div className="ResultadoRastreador">
+            
+            <h2>{pedido.status}</h2>
+               <p>
+                   <span>ID:</span> {pedido.idPedido}
+                   <br/>
+                   <span>Remitente:</span> {pedido.remitente}
+                   <br/>
+                   <span>Deposito:</span> {pedido.montoDeposito}
+                   <br/>
+                   <span>monto deposito:</span> {pedido.remitente}
+                   <br/>
+                   <span>Moneda</span> {pedido.monedaDeposito}
+                   <br/>
+                   <span>Remitente:</span> {pedido.remitente}
+                   <br/>
+                   <span>Monto de retiro</span> {pedido.monedaDeposito}
+               </p>
+               </div>:null
+            }
+            
                 <Link to='/' className="btnGreen">
                     Rastrear orden
                 </Link>
             </div>
         </section>
     </main>
+    <div className="Footer">
+        <span>Copyright © 2019 <a href="#">VCoin Transfer</a> | WebMasters <a href="#">@NovatoCreativo</a></span>
+    </div>
+    
         </Fragment>
     ):<Redirect to='/Dashboard'/>
 } 

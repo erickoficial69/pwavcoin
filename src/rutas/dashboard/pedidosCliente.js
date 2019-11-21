@@ -19,6 +19,7 @@ const PedidosCliente = (props)=>{
         const [limit, setLimit] = useState(31)
         const [loading,setLoading] = useState(true)
         const [modal,setModal] = useState(false)
+        const [loadPdf, setLoadPdf] = useState(false)
 
        const showModal = e =>{
             if(e.target.attributes.status.textContent === 'cancelada'){
@@ -32,7 +33,8 @@ const PedidosCliente = (props)=>{
             return
         }
        const download=async(e)=>{
-          downloadPdf(e)
+        setLoadPdf(true)
+        downloadPdf(e,setLoadPdf)
         }
        const show = e =>{
            e.target.classList.toggle('detalles')
@@ -46,7 +48,7 @@ const PedidosCliente = (props)=>{
             
                 <h1>Ultimos pedidos</h1>
                 
-                <section className="table">
+        <section className="table">
             <div className="thead">
                 <h2 className="IDth">ID</h2>
                 <h2 className="Fechath">Fecha</h2>
@@ -73,10 +75,9 @@ const PedidosCliente = (props)=>{
                                             {loading?<Loading2/>:items.montoRetiro} 
                                         </span>
                                     </div>
-                                    
-                                        <p className="status">
+                                     <p className="status">
                                             {loading?<Loading2/>:items.status}
-                                        </p>
+                                    </p>
                                 
                                     {
                                         items.status === 'aceptada'?(
@@ -136,9 +137,6 @@ const PedidosCliente = (props)=>{
                                         <br/>
                                         <span>Doc. Identidad:</span> {items.dni}
                                         <br/>
-                                        <span>Direccion:</span> {items.direccion}
-                                        <br/>
-                                        
                                         <span>Correo:</span> {items.correo}
                                         <br/>
                                         <span>Refenecia Deposito:</span> {!items.referenciaDeposito?'Por Definir':items.referenciaDeposito}
@@ -158,7 +156,7 @@ const PedidosCliente = (props)=>{
                                         <br/>
                                         <span>Tipo de cuenta:</span>{items.tipoCuenta}
                                         <br/>
-                                        <span>Numero de cuenta:</span>{items.numeroCuenta}
+                                        <span>Numero de cuenta:</span> {items.numeroCuenta}
                                     </p>
                                 </div>
                                 <span>
@@ -173,9 +171,11 @@ const PedidosCliente = (props)=>{
                                         </span>
                                        
                                     </p>
+                                    <p>
                                      Operador: <span>
                                         {!items.nombreOperador?' ':items.nombreOperador}
                                         </span>
+                                        </p>
                                 </span>
                                 <br/>
                                 <span>
@@ -192,7 +192,7 @@ const PedidosCliente = (props)=>{
                                 </span>
                             </article>
                             <div className="Botones">
-                            <p className="btnBlue print" id={items.idPedido} onClick={download}>Descargar</p> 
+                            <p className="btnBlue print" id={items.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p> 
                             </div>
                             
                         </article>

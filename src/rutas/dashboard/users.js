@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from'react'
+import React, {useState, useEffect, useLayoutEffect} from'react'
 import {Link} from 'react-router-dom'
 import {getUsers,getUser} from '../../gets_apis/api_sesion'
 import detalles from '../../svg/detalles.svg'
@@ -23,11 +23,12 @@ const Users = ()=>{
             }
             
         }
-        useEffect(()=>{
+        useLayoutEffect(()=>{
             setOperador(sessionStorage.userSesion?JSON.parse(sessionStorage.userSesion):null)
             getUsers(setUsers,setLoading)
         },[limit])
- return (
+
+ return operador.rango === 'administrador' || operador.rango === 'corresponsal'?(
         <div className='container'>  
                 <h1>Listado de Usuarios</h1>
                 <button className='btnBlue' onClick={()=>setModalReg(true)} >Registrar nuevo usuario</button>
@@ -132,7 +133,7 @@ const Users = ()=>{
                   mostrar más</button> 
                  
         </div>   
-        ) 
+        ) : <div className='container'><h1>No autorizado</h1></div>
 } 
 
 export default Users

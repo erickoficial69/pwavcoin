@@ -18,6 +18,7 @@ const PedidosAdm = (props)=>{
     const [loading,setLoading] = useState(true)
     const [modal,setModal] = useState(false)
     const [modalMessage,setModalMessage] = useState(false)
+    const [loadPdf, setLoadPdf] = useState(false)
     const {typeUser} = props
 
     const showModal = e =>{
@@ -36,7 +37,8 @@ const PedidosAdm = (props)=>{
        }
 
        const download=async(e)=>{
-          downloadPdf(e)
+        setLoadPdf(true)
+          downloadPdf(e,setLoadPdf)
         }
 
         useEffect(()=>{
@@ -176,9 +178,6 @@ const PedidosAdm = (props)=>{
                                             <br/>
                                             <span>Doc. Identidad:</span> {pedido.dni}
                                             <br/>
-                                            <span>Direccion:</span> {pedido.direccion}
-                                            <br/>
-                                            
                                             <span>Correo:</span> {pedido.correo}<br/>
                                             <span>Referencia deposito:</span> {pedido.referenciaDeposito}
                                         </p>
@@ -240,9 +239,9 @@ const PedidosAdm = (props)=>{
                                 </article>
                                 <div className="Botones">
 
-                                <p className="btnBlue print" id={pedido.idPedido} onClick={download}>Descargar</p>
+                                <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p>
                                 
-                                <p className="btnGreen" onClick={()=>setModal(modal?false:true)} >mensaje</p>
+                                <p className="btnGreen" onClick={()=>setModalMessage(modalMessage?false:true)} >mensaje</p>
                                 </div>
                                 {
                                     modalMessage?
