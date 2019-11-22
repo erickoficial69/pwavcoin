@@ -72,7 +72,7 @@ function Home(){
                 <p>
                     Contactanos vía WhatsApp para cotizaciones en otras monedas
                 </p>
-                <a className="btnGreen" href='https://api.whatsapp.com/send?phone=+56959046834&text=Hola%2C+deseo+adquirir+un+soporte+con+ustedes'>
+                <a className="btnGreen" href='https://api.whatsapp.com/send?phone=+56959095044&text=Hola%2C+deseo+adquirir+un+soporte+con+ustedes'>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
 	 viewBox="0 0 418.135 418.135"  >
 <g>
