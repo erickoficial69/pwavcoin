@@ -71,9 +71,9 @@ function PwaFeactures(){
                              </div>
                     :null}
 
-                    <div className="Notificacion AtencionEnLinea">
+                    <a href="https://api.whatsapp.com/send?phone=+56959095044&text=Hola%2C+deseo+adquirir+un+soporte+con+ustedes" className="Notificacion AtencionEnLinea">
                         <img src={atencionalcliente} alt=""/>
-                    </div>
+                    </a>
             </div>
         </Fragment>
     )
