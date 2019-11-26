@@ -92,7 +92,7 @@ function Home(){
 </svg>
 
         <br/>
-                    WhatsApp +56959046834</a>
+                    WhatsApp +56959095044</a>
             </div>
         </section>
         <section className="BancosAfiliados">
