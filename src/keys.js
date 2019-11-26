@@ -1,5 +1,6 @@
+
 const servers={
-   devServer:'https://backendvcoin.herokuapp.com', //http://localhost:4000  
+   devServer:'https://vcointransfer.herokuapp.com', // https://backendvcoin.herokuapp.com
    staticServer:'https://storagevcoin.ml'  //http://localhost:80/storagevcoin
 }
 
