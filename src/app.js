@@ -30,12 +30,7 @@ function Logout(){
 }
 
 function App(){
-    const [sesion,setSesion] = useState(false)
     
-    useEffect(()=>{
-        setSesion(sessionStorage.userSesion?true:false)
-    },[])
-   
          return(
                 <Router>
                     <PwaFeacture/>

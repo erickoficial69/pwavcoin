@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import './or.css'
-import cont from '../../../svg/contrato.svg'
 import {updatePedido,updatePedidoAdm} from '../../../gets_apis/sockets'
 import {getBanks,getPedido, downloadPdf} from '../../../gets_apis/api_sesion'
 import {Redirect} from 'react-router-dom'
