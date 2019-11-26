@@ -92,7 +92,7 @@ function FormSesion(props){
                             loading2? <Loading/> : null
                     }
                     <div className="Terminos">
-                        <input type='checkbox' name='faqs' id='faqs'/>
+                        <input type='checkbox' name='faqs' id='faqs' required/>
                         <label htmlFor='faqs'>aceptar terminos y condiciones</label> 
                     </div>
                     {verify === 'no' ? <span className='btnRed BTN'>correo ocupado</span>:
