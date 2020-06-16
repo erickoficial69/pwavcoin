@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect,useState, useLayoutEffect} from'react'
-import {Link,Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import {coments} from '../../gets_apis/sockets'
 import {rastrearPedido} from '../../gets_apis/api_sesion'
 import './home.css'
@@ -11,16 +11,6 @@ import pMonitoreado from '../../svg/procesoMonitoreado.svg'
 import mejorTazaMercado from '../../svg/mejorTazaMercado.svg'
 import atencionLinea from '../../svg/atencionEnLinea.svg'
 import profile from '../../components/images/team-member01-150x150.jpg'
-import BancoBci from '../../components/images/BancoBci.png'
-import BancoBrou from '../../components/images/BancoBrou.jpg'
-import BancoEstado from '../../components/images/BancoEstado.jpg'
-import Bancolombia from '../../components/images/Bancolombia.png'
-import BancoPichincha from '../../components/images/BancoPichincha.jpg'
-import BancoUala from '../../components/images/BancoUala.jpg'
-import mercadoPago from '../../components/images/mercadopago.jpg'
-import Skrill from '../../components/images/skrill.png'
-import BitCoin from '../../components/images/bitcoin.png'
-import Brubank from '../../components/images/brubank.png'
 import {servers} from '../../keys'
 
 const {staticServer} = servers
@@ -38,6 +28,7 @@ function Home(){
     useEffect(()=>{
         setSesion(sessionStorage.userSesion)
     })
+    
     return !sesion? (
         <Fragment>
             <header>
@@ -120,13 +111,13 @@ function Home(){
                     <img src={`${staticServer}/images/bitcoin.png`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={Bancolombia} alt=""/>
+                    <img src={`${staticServer}/images/Bancolombia.png`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BancoPichincha} alt=""/>
+                    <img src={`${staticServer}/images/BancoPichincha.jpg`} alt=""/>
                 </div>
                 <div className="Cartas">
-                    <img src={BancoUala} alt=""/>
+                    <img src={`${staticServer}/images/BancoUala.jpg`} alt=""/>
                 </div>
             </article>
         </section>
@@ -152,31 +143,36 @@ function Home(){
                 </div>
             </article>
         </section>
-        <section id="Resenas">
-            <h1>Reseñas de clientes</h1>
-            <div>
-                {
-                    loading?(
-                        <article className="Resenas">
-                    <img src={profile} alt=""/>
-                    <div className="Resena">
-                        <p>cargando</p>
-                        <h3>cargando</h3>
-                    </div>
-                </article>
-                    ): resenas.map((res,i)=>{
-                    return res.status === 'aprobar'?(
-                        <article className="Resenas">
-                            <img src={res.foto?staticServer+res.foto:profile} alt=""/>
-                            <div className="Resena">
-                                <p>{res.resena}</p>
+            {
+                resenas.length < 1 ?(
+                     <section id="Resenas">
+                        <h1>Reseñas de clientes</h1>
+                        <div>
+                                {
+                                    loading?(
+                                        <article className="Resenas">
+                                    <img src={profile} alt=""/>
+                                    <div className="Resena">
+                                        <p>cargando</p>
+                                        <h3>cargando</h3>
+                                    </div>
+                                </article>
+                                    ): resenas.map((res,i)=>{
+                                    return res.status === 'aprobar'?(
+                                        <article className="Resenas">
+                                            <img src={res.foto?staticServer+res.foto:profile} alt=""/>
+                                            <div className="Resena">
+                                                <p>{res.resena}</p>
+                                            </div>
+                                        </article>
+                                    ):null
+                                })
+                                }
+                        
                             </div>
-                        </article>
-                    ):null
-                })
-                }
-            </div>
         </section>
+        ):null
+        }
         <section id="Rastrear" className="Rastreador">
             <h1>Rastreador</h1>
             <div className="Buscador">

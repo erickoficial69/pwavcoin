@@ -1,6 +1,6 @@
-import React, {useState, useEffect, Fragment, useLayoutEffect} from'react'
+import React, {useState, Fragment, useLayoutEffect} from'react'
 import {Link} from 'react-router-dom'
-import {pedidos,pedidosAdministrador,updatePedido} from '../../gets_apis/sockets'
+import {pedidos,pedidosAdministrador} from '../../gets_apis/sockets'
 import palometa from '../../svg/palometa.svg'
 import cerrar from '../../svg/cerrar.svg'
 import contrato from '../../svg/contrato.svg'
@@ -8,23 +8,13 @@ import contrato from '../../svg/contrato.svg'
 
 
 function Pedidos(){
-  const [user, setUser] = useState(false)
+  const [setUser] = useState(false)
   const [pedidosr, setPedidos] = useState([{}])
-  const [limit, setLimit] = useState(4)
-  const [table,setTable] = useState()
-    
- /*  const update = e =>{
-    e.preventDefault()
-    window.confirm('Desea seguir con la operacion?')
-    return updatePedido(e.target.attributes)
-  } */
-  const mostrar = e => console.log(table)
 
   useLayoutEffect(()=>{
       const userget = JSON.parse(sessionStorage.userSesion)
-      setTable(document.querySelector('#test'))
       setUser(userget)
-      userget.rango === 'administrador' ? pedidosAdministrador(setPedidos,limit) : pedidos(userget.correo,setPedidos)
+      userget.rango === 'administrador' ? pedidosAdministrador(setPedidos) : pedidos(userget.correo,setPedidos)
      
     },[])
 

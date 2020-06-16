@@ -2,32 +2,16 @@ import React, {useState,useLayoutEffect} from'react'
 import {updatePedido,pedidosAdministrador} from '../../gets_apis/sockets'
 import {downloadPdf} from '../../gets_apis/api_sesion'
 import detalles from '../../svg/detalles.svg'
-import cerrarDetalles from '../../svg/cerrar.svg'
 import advertencia from '../../svg/advertencia.svg'
 import enviado from '../../svg/enviado.svg'
-import waiting from '../../svg/esperar.svg'
 import Loading2 from '../../components/loading/loading2'
-import CancelMessage from '../cancelMessage'
 
 const HistoryOperador = (props)=>{
-    const {usuario,idUser} = props
+    const {usuario} = props
     const [tabla, setTabla] = useState([{}])
     const [limit, setLimit] = useState(31)
     const [loading,setLoading] = useState(true)
     const [loadPdf, setLoadPdf] = useState(false)
-    const [modal,setModal] = useState(false)
-
-    const showModal = e =>{
-        if(e.target.attributes.status.textContent === 'cancelada'){
-            
-            setModal(true)
-            return 
-        }else{
-            updatePedido(e.target.attributes)
-        }
-        
-        return
-    }
 
     const download=async(e)=>{
         setLoadPdf(true)
@@ -126,7 +110,7 @@ const HistoryOperador = (props)=>{
                                             </span>
                                         </p>
                                         <p>
-                                            Taza del dia: <span>
+                                            Tasa del dia: <span>
                                                {items.tazaCambio}
                                             </span>
                                            

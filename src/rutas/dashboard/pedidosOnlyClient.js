@@ -54,30 +54,6 @@ const PedidosOnlyClient = (props)=>{
                                         <p className="status">
                                             {loading?<Loading2/>:items.status}
                                         </p>
-                                
-                                    {/* 
-                                        items.status === 'aceptada'?(
-                                            loading?<Loading2/>:<Link to={`/Dashboard/VerifyOrder/${items.idPedido}/${items.idUsuario}`}>
-                                                <img src={palometa} alt=""/>
-                                            </Link>
-                                        ):null  */
-                                    }
-                                    
-                                    {/* 
-                                        items.status !=='pagada'?(
-                                            loading?<Loading2/>:<img onClick={getUpdate}
-                                            id={items.idPedido}
-                                            status='cancelada'
-                                            idusuario={items.idUsuario}
-                                            src={cerrarDetalles}
-                                            correousuario={items.correo}
-                                            nombreusuario={items.nombre+' '+items.apellido}
-                                            idoperador={!items.idOperador?' ':items.idOperador}
-                                            nombreoperador={!items.nombreOperador?' ':items.nombreOperador}
-                                            correooperador={!items.correoOperador?' ':items.correoOperador} 
-                                            alt=""/>
-                                        ):null */
-                                    }
        
                             { loading?<Loading2/>:<img  src={detalles} alt="" id="cerrar" onClick={show}/>}
 
@@ -155,10 +131,7 @@ const PedidosOnlyClient = (props)=>{
                                     </p>                       
                                 </span>
                             </article>
-                            {/* <div className="Botones">
-                            <p className="btnBlue print" onClick={downloadPdf}>descargar</p> <p className="btnBlue" >Imprimir</p>
-                            </div>
-                             */}
+                            
                         </article>
                             </div>
                         </span>
@@ -182,30 +155,6 @@ const PedidosOnlyClient = (props)=>{
                                         <p className="status">
                                             {loading?<Loading2/>:items.status}
                                         </p>
-                                
-                                    {/* 
-                                        items.status === 'aceptada'?(
-                                            loading?<Loading2/>:<Link to={`/Dashboard/VerifyOrder/${items.idPedido}/${items.idUsuario}`}>
-                                                <img src={palometa} alt=""/>
-                                            </Link>
-                                        ):null  */
-                                    }
-                                    
-                                    {/* 
-                                        items.status !=='pagada'?(
-                                            loading?<Loading2/>:<img onClick={getUpdate}
-                                            id={items.idPedido}
-                                            status='cancelada'
-                                            idusuario={items.idUsuario}
-                                            src={cerrarDetalles}
-                                            correousuario={items.correo}
-                                            nombreusuario={items.nombre+' '+items.apellido}
-                                            idoperador={!items.idOperador?' ':items.idOperador}
-                                            nombreoperador={!items.nombreOperador?' ':items.nombreOperador}
-                                            correooperador={!items.correoOperador?' ':items.correoOperador} 
-                                            alt=""/>
-                                        ):null */
-                                    }
        
                             { loading?<Loading2/>:<img  src={detalles} alt="" id="cerrar" onClick={show}/>}
 
@@ -280,10 +229,6 @@ const PedidosOnlyClient = (props)=>{
                                     </p>                       
                                 </span>
                             </article>
-                            {/* <div className="Botones">
-                            <p className="btnBlue print" onClick={downloadPdf}>descargar</p> <p className="btnBlue" >Imprimir</p>
-                            </div>
-                             */}
                         </article>
                             </div>
                         </span>

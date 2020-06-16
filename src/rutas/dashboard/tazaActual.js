@@ -70,7 +70,7 @@ const add = e =>{
           
     ):document.location.pathname !== '/Dashboard/AddPais'?(
       <Fragment>
-          <h1>Taza del dia</h1>
+          <h1>Tasa del dia</h1>
           <section className="Monedas">
               {
                 taza.map((items, i)=>(

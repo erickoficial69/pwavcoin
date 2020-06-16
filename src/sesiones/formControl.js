@@ -1,4 +1,4 @@
-import React, {useState, Fragment, useEffect,useLayoutEffect} from 'react'
+import React, {useState, Fragment, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import './formSesion.css'
 import {registerUser, login, verifyMail,getBank} from '../gets_apis/api_sesion'
@@ -166,7 +166,7 @@ function FormPedidos(props){
                         <br/>
                         <span>Moneda Depositada:</span> {formula.monedaDeposito}
                         <br/>
-                        <span>Taza de Cambio:</span> { 1 / formula.tazacambioorigen}
+                        <span>Tasa de Cambio:</span> { 1 / formula.tazacambioorigen}
                         <br/>
                         <span>Monto de Retiro:</span> {resultado} 
                         <br/>
@@ -242,12 +242,11 @@ const FormRegisterUser = (props)=>{
     const {modalReg, setModalReg, idOperador} = props
     const [loading2, setLoading2] = useState(false)
     const [verify, setVerify] = useState('')
-    const [ctrl, setCtrl] = useState(false)
 
     const startVerify = e =>verifyMail(e,setVerify,setLoading2)
     const startRegister = async e =>{
         e.preventDefault()
-        registerUser(e, setLoading2,setModalReg,setCtrl)
+        registerUser(e, setLoading2,setModalReg)
         return document.querySelector('#reg').reset()
     }
 useEffect(()=>{

@@ -166,7 +166,7 @@ const PedidosCliente = (props)=>{
                                         </span>
                                     </p>
                                     <p>
-                                        Taza del dia: <span>
+                                        Tasa del dia: <span>
                                            {items.tazaCambio}
                                         </span>
                                        

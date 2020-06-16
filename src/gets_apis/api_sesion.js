@@ -323,16 +323,18 @@ const updatePhoneNumber = async (datos,setLoading)=>{
 }
 const downloadPdf=async(e,setLoadPdf)=>{
   const getData = await Axios.post(`${devServer}/pedido`,{id:e.target.attributes.id.value})
-   const dataPedido =  getData.data
+   const dataPedido = await getData.data
    
    const createPdf = await Axios.post(`${devServer}/createpdf`,dataPedido)
-   const filePdf =  createPdf.data
+   const filePdf = await createPdf.data
 
-   if(filePdf==='ok'){
+   if(filePdf !== "error"){
        const desc = await Axios.get(`${devServer}/getpdf/${dataPedido.idPedido}`,{responseType:'blob'})
        const pdfBlob = new Blob([desc.data], { type: 'application/pdf' });
        saveAs(pdfBlob,`${dataPedido.idPedido}`)
        setLoadPdf(false)
+   }else{
+      setLoadPdf(false)
    }
 }
 const savePhoto = async(result,idUsuario,setLoading)=>{
