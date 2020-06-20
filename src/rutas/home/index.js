@@ -12,7 +12,12 @@ import mejorTazaMercado from '../../svg/mejorTazaMercado.svg'
 import atencionLinea from '../../svg/atencionEnLinea.svg'
 import profile from '../../components/images/team-member01-150x150.jpg'
 import {servers} from '../../keys'
+import fileSaver,{saveAs} from 'file-saver'
+import Invoice from '../../components/invoice'
+import '../../components/css.invoice.css'
 
+import jsPDF from 'jspdf'
+import html2canvas from 'html2canvas'
 const {staticServer} = servers
 
 function Home(){ 
@@ -20,6 +25,18 @@ function Home(){
     const [loading, setLoading] = useState(false)
     const [pedido, setPedido] = useState(false)
     const [sesion, setSesion] = useState(false)
+  const printDocument = ()=>{
+    const input = document.getElementById('invoice');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+               
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        pdf.save("download.pdf");
+      })
+    ;
+  }
 
     useLayoutEffect(()=>{
         coments(setLoading,setResena)
@@ -32,9 +49,9 @@ function Home(){
     return !sesion? (
         <Fragment>
             <header>
-        <div>
+        <div >
             <img src={logo1} alt=""/>
-            <h2>
+            <h2 >
                 Otra forma de enviar dinero
             </h2>
         </div>
@@ -46,6 +63,10 @@ function Home(){
         </form>
     </header>
     <main className='scroll'>
+        <div id="invoice" >
+            <Invoice pedido={pedido}/>
+        </div>
+        <button onClick={printDocument} >Imprime esa mierda!</button>
         <section className="SobreNosotros" id="SobreNosotros">
             <span>
                 <img src={btc} alt=""/>
@@ -121,7 +142,7 @@ function Home(){
                 </div>
             </article>
         </section>
-        <section className="PorQueElegirnos">
+        <section className="PorQueElegirnos" id="PorQueElegirnos" >
             <h1>Por que elegirnos</h1>
             <p>Permitiendo a nuestros clientes ahorrar tiempo, dinero y de esa forma satisfacer al 100% mas de 2000 clientes </p>
             <article>
