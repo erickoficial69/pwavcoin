@@ -36,7 +36,7 @@ workbox.routing.registerRoute(
 );
 workbox.routing.registerRoute(
   // Cache image files.
-  /^https?:\/\/storagevcoin.ml\/images\/.(?:png|jpg|jpeg|svg|gif)$/,
+  /^https?:\/\/vcointransfer.herokuapp.com\/static\/images\/.(?:png|jpg|jpeg|svg|gif)$/,
   // Use the cache if it's available.
   new workbox.strategies.CacheFirst({
     // Use a custom cache name.
@@ -54,7 +54,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
   // Cache image files.
-  /^https?:\/\/storagevcoin.ml\/paises\/.(?:png|jpg|jpeg|svg|gif)$/,
+  /^https?:\/\/vcointransfer.herokuapp.com\/static\/paises\/.(?:png|jpg|jpeg|svg|gif)$/,
   // Use the cache if it's available.
   new workbox.strategies.CacheFirst({
     // Use a custom cache name.
@@ -70,7 +70,7 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerRoute(/^https?:\/\/storagevcoin.ml\/images\/.*/, 
+workbox.routing.registerRoute(/^https?:\/\/vcointransfer.herokuapp.com\/static\/uploads\/.*/, 
     new workbox.strategies.CacheFirst(),
  'GET')
 
