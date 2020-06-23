@@ -3,7 +3,7 @@ const servers={
    devServer:process.env.BACKEND || 'http://localhost:4000', //https://vcointransfer.herokuapp.com
    staticServer:process.env.STATIC || 'http://localhost:4000/static' //https://vcointransfer.herokuapp.com/static
 }
-
+console.log(process.env.BACKEND)
 export {servers}
 
 /* Header set Access-Control-Allow-Origin "*"
