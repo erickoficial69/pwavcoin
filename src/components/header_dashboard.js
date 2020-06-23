@@ -68,7 +68,7 @@ const Headerdashboard = (props)=>{
                 //boton de mensajes 
             }
             
-            <img src={user.foto?staticServer+user.foto:avatar} alt=""/>
+            <img src={user.foto?staticServer+'/'+user.foto:avatar} alt=""/>
             <div>
             <h3>{user.nombre} {user.apelido} </h3>
             <p>rango: {user.rango}</p>

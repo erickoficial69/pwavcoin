@@ -8,7 +8,7 @@ import avatar from '../../svg/usuario.svg'
 import Loading from '../../components/loading/'
 
 import {servers}from '../../keys'
-const {staticServer} = servers
+const {staticServer,devServer} = servers
 
 function ProfileSettings(props){
     const {id} = props.match.params
@@ -35,7 +35,7 @@ function ProfileSettings(props){
         e.preventDefault()
         const photo = new FormData()
         photo.append('photo',e.target.files[0])
-        const sendFile = await axios.post(`${staticServer}/upload.php`,photo)
+        const sendFile = await axios.post(`${devServer}/upload`,photo)
         const result = sendFile.data
         savePhoto(result,id,setLoading,setUser)
         getOneUser(setUser,id,setLoading)
@@ -74,7 +74,7 @@ function ProfileSettings(props){
         <div className="ActualizarDatos">
           
             <div className="Foto1">
-                {!loading?<img src={user.foto?staticServer+user.foto:avatar} alt=""/>:<Loading />}
+                {!loading?<img src={user.foto?staticServer+'/'+user.foto:avatar} alt=""/>:<Loading />}
                 {
                     loading?<Loading />:<div className="Subir">
                     <input type="file" name='foto' onChange={updatePhoto}/>
