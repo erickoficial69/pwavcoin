@@ -1,6 +1,5 @@
 import React, {useState,useLayoutEffect} from'react'
-import {updatePedido,pedidosAdministrador} from '../../gets_apis/sockets'
-import {downloadPdf} from '../../gets_apis/api_sesion'
+import {pedidosAdministrador} from '../../gets_apis/sockets'
 import detalles from '../../svg/detalles.svg'
 import advertencia from '../../svg/advertencia.svg'
 import enviado from '../../svg/enviado.svg'
@@ -16,10 +15,6 @@ const HistoryOperador = (props)=>{
     const [loading,setLoading] = useState(true)
     const [loadPdf, setLoadPdf] = useState(false)
 
-    const download=async(e)=>{
-        setLoadPdf(true)
-        downloadPdf(e,setLoadPdf)
-        }
        const show = e =>{
            e.target.classList.toggle('detalles')
        }

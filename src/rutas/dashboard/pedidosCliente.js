@@ -1,7 +1,6 @@
 import React, {Fragment, useState, useEffect} from'react'
 import {Link} from 'react-router-dom'
 import {updatePedido,deletePedido,pedidos} from '../../gets_apis/sockets'
-import {downloadPdf} from '../../gets_apis/api_sesion'
 import palometa from '../../svg/palometa.svg'
 import detalles from '../../svg/detalles.svg'
 import cerrarDetalles from '../../svg/cerrar.svg'
@@ -33,10 +32,6 @@ const PedidosCliente = (props)=>{
             }
             
             return
-        }
-       const download=async(e)=>{
-        setLoadPdf(true)
-        downloadPdf(e,setLoadPdf)
         }
        const show = e =>{
            e.target.classList.toggle('detalles')

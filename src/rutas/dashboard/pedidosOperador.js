@@ -1,7 +1,6 @@
 import React, {Fragment, useState, useEffect} from'react'
 import {Link} from 'react-router-dom'
 import {updatePedidoAdm,pedidosAdministrador,deletePedido} from '../../gets_apis/sockets'
-import {downloadPdf} from '../../gets_apis/api_sesion'
 import palometa from '../../svg/palometa.svg'
 import detalles from '../../svg/detalles.svg'
 import cerrarDetalles from '../../svg/cerrar.svg'
@@ -39,11 +38,7 @@ const PedidosAdm = (props)=>{
            e.target.classList.toggle('detalles')
        }
 
-       const download=async(e)=>{
-        setLoadPdf(true)
-        downloadPdf(e,setLoadPdf)
-        }
-       
+
         useEffect(()=>{
             pedidosAdministrador(setTabla,limit,setLoading)
         },[limit])

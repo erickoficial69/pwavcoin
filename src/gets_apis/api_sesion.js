@@ -1,6 +1,5 @@
 import Axios from 'axios';
 import {servers} from '../keys'
-import {saveAs} from 'file-saver'
 const {devServer} = servers
 
 const registerUser = async (data, setLoading) =>{
@@ -321,22 +320,7 @@ const updatePhoneNumber = async (datos,setLoading)=>{
     setLoading(false)
   }
 }
-const downloadPdf=async(e,setLoadPdf)=>{
-  const getData = await Axios.post(`${devServer}/pedido`,{id:e.target.attributes.id.value})
-   const dataPedido = await getData.data
-   
-   const createPdf = await Axios.post(`${devServer}/createpdf`,dataPedido)
-   const filePdf = await createPdf.data
 
-   if(filePdf !== "error"){
-       const desc = await Axios.get(`${devServer}/getpdf/${dataPedido.idPedido}`,{responseType:'blob'})
-       const pdfBlob = new Blob([desc.data], { type: 'application/pdf' });
-       saveAs(pdfBlob,`${dataPedido.idPedido}`)
-       setLoadPdf(false)
-   }else{
-      setLoadPdf(false)
-   }
-}
 const savePhoto = async(result,idUsuario,setLoading)=>{
   setLoading(true)
    const datos = {
@@ -362,4 +346,4 @@ const rastrearPedido = async(idPedido,setPedido)=>{
     console.log(rs)
     setPedido(rs)
 }
-export {verifyMail, login, registerUser, getBanks, addBank,deleteBank,getPedidosg,getPedido,getPaises,deletePedido,imgPaises,dataPais,getUsers,getUser,getOneUser,upgradeUser,setStatusUser,getBank,getBankPedido,updateOneUser,updatePhoneNumber,secureSesion,downloadPdf,savePhoto,rastrearPedido}
+export {verifyMail, login, registerUser, getBanks, addBank,deleteBank,getPedidosg,getPedido,getPaises,deletePedido,imgPaises,dataPais,getUsers,getUser,getOneUser,upgradeUser,setStatusUser,getBank,getBankPedido,updateOneUser,updatePhoneNumber,secureSesion,savePhoto,rastrearPedido}
