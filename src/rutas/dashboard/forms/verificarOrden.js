@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import './or.css'
 import {updatePedido,updatePedidoAdm} from '../../../gets_apis/sockets'
-import {getBanks,getPedido, downloadPdf} from '../../../gets_apis/api_sesion'
+import {getBanks,getPedido} from '../../../gets_apis/api_sesion'
 import {Redirect} from 'react-router-dom'
+
+import Invoice from '../../../components/invoice'
+import {PDFDownloadLink} from '@react-pdf/renderer'
 
 const VerifyOrder = (props)=>{
     const {item,rank,idUser} = props.match.params
@@ -10,7 +13,6 @@ const VerifyOrder = (props)=>{
     const [banks, setBanks] = useState([{}])
     const [pedido,setPedido] = useState({})
     const [verify,setVerify]=useState('')
-    const [loadPdf, setLoadPdf] = useState(false)
 
     const confirmar = e =>{
         e.preventDefault()
@@ -32,15 +34,11 @@ const VerifyOrder = (props)=>{
         return
     }
 
-    const download=async(e)=>{
-        setLoad(true)
-          downloadPdf(e,setLoadPdf)
-        }
 
-useEffect(()=>{
-    getBanks(setBanks,idUser,setLoad)
-    getPedido(item,setPedido,setLoad)
-},[item,idUser])
+    useEffect(()=>{
+        getBanks(setBanks,idUser,setLoad)
+        getPedido(item,setPedido,setLoad)
+    },[item,idUser])
 
     return rank===undefined?(
         <div className='container' >
@@ -75,9 +73,20 @@ useEffect(()=>{
         </form>
 
         <h3>Para Depositos en efectivo</h3>
-                <button className={!load?'btnBlue BTN':'btnRed BTN'} id={item} onClick={download} disabled={!loadPdf?'':'disabled'} >
-                    {!loadPdf?'descargar libreta':'espere'}
-                </button>
+                <PDFDownloadLink
+                            className={!load?'btnBlue BTN':'btnRed BTN'}
+                            style={
+                                {
+                                    margin:'10px 5px 0px 0px',
+                                    padding:'9px 30px',
+                                    fontSize:'14px'
+                                }
+                            }
+                            document={<Invoice pedido={pedido} />} fileName="pedido.pdf">
+                            {({ blob, url, loading, error }) =>
+                                loading ? 'Loading...' : 'Imprimir'
+                            }
+                            </PDFDownloadLink>
         </article>
         {verify==='ok'?<Redirect to='/Dashboard'/>:null}
         </div>

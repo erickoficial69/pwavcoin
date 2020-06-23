@@ -14,14 +14,14 @@ const sendNotification = async (mensaje)=>{
         worker.showNotification(mensaje.titulo,{
             body:mensaje.body,
             icon:'/ico.png',
-            vibrate: [200, 100, 200, 100, 200, 100, 200]
+            vibrate: [200, 100]
         })
         return
     }else{
         new Notification(mensaje.titulo,{
             body:mensaje.body,
             icon:'/ico.png',
-            vibrate: [200, 100, 200, 100, 200, 100, 200]
+            vibrate: [200, 100]
         })
     }
 }

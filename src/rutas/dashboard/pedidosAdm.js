@@ -1,7 +1,6 @@
 import React, {Fragment, useState, useEffect} from'react'
 import {Link} from 'react-router-dom'
 import {updatePedidoAdm,pedidosAdministrador,deletePedido} from '../../gets_apis/sockets'
-import {downloadPdf} from '../../gets_apis/api_sesion'
 import palometa from '../../svg/palometa.svg'
 import detalles from '../../svg/detalles.svg'
 import cerrarDetalles from '../../svg/cerrar.svg'
@@ -11,14 +10,16 @@ import Loading2 from '../../components/loading/loading2'
 import FormMessage from '../formMessages'
 import CancelMessage from '../cancelMessage'
 
+import Invoice from '../../components/invoice'
+import {PDFDownloadLink} from '@react-pdf/renderer'
+
 const PedidosAdm = (props)=>{
-    const [tabla, setTabla] = useState([{}])
+    const [tabla, setTabla] = useState([])
     const [status,setStatus] = useState('abierta')
     const [limit,setLimit] = useState(31)
     const [loading,setLoading] = useState(true)
     const [modal,setModal] = useState(false)
     const [modalMessage,setModalMessage] = useState(false)
-    const [loadPdf, setLoadPdf] = useState(false)
     const {typeUser} = props
 
     const showModal = e =>{
@@ -35,11 +36,6 @@ const PedidosAdm = (props)=>{
        const show = e =>{
            e.target.classList.toggle('detalles')
        }
-
-       const download=async(e)=>{
-        setLoadPdf(true)
-          downloadPdf(e,setLoadPdf)
-        }
 
         useEffect(()=>{
             pedidosAdministrador(setTabla,limit,setLoading)
@@ -239,7 +235,19 @@ const PedidosAdm = (props)=>{
                                 </article>
                                 <div className="Botones">
 
-                                <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p>
+                                <PDFDownloadLink
+                                className="btnBlue"
+                                style={
+                                    {
+                                        margin:'10px 5px 0px 0px',
+                                        fontSize:'14px'
+                                    }
+                                }
+                                document={<Invoice pedido={pedido} />} fileName="pedido.pdf">
+                                {({ blob, url, loading, error }) =>
+                                    loading ? 'Loading...' : 'Imprimir'
+                                }
+                                </PDFDownloadLink>
                                 
                                 <p className="btnGreen" onClick={()=>setModalMessage(modalMessage?false:true)} >mensaje</p>
                                 </div>

@@ -11,6 +11,8 @@ import waiting from '../../svg/esperar.svg'
 import Loading2 from '../../components/loading/loading2'
 import CancelMessage from '../cancelMessage'
 
+import Invoice from '../../components/invoice'
+import {PDFDownloadLink} from '@react-pdf/renderer'
 
 const PedidosCliente = (props)=>{
     
@@ -57,42 +59,42 @@ const PedidosCliente = (props)=>{
                 <h2>Detalles</h2>
             </div>
             <div className="tbody">
-                    { tabla.map((items,i)=>{
+                    { tabla.map((pedido,i)=>{
                         
-                         return items.status==='pagada'||items.status==='abierta'||items.status==='aceptada'?(
+                         return pedido.status==='pagada'||pedido.status==='abierta'||pedido.status==='aceptada'?(
                             <span key={i} className="tr">
                                     <div className="td IDtr">
-                                        {loading?<Loading2/>:items.idPedido}
+                                        {loading?<Loading2/>:pedido.idPedido}
                                     </div>
                                     <div className="td Fechatd">
-                                        {loading?<Loading2/>:items.fechaPedido}
+                                        {loading?<Loading2/>:pedido.fechaPedido}
                                     </div>
                                     <div className="td">
-                                        {loading?<Loading2/>:items.montoDeposito}
+                                        {loading?<Loading2/>:pedido.montoDeposito}
                                     </div>
                                     <div className="td">
                                         <span>
-                                            {loading?<Loading2/>:items.montoRetiro} 
+                                            {loading?<Loading2/>:pedido.montoRetiro} 
                                         </span>
                                     </div>
                                      <p className="status">
-                                            {loading?<Loading2/>:items.status}
+                                            {loading?<Loading2/>:pedido.status}
                                     </p>
                                 
                                     {
-                                        items.status === 'aceptada'?(
-                                            loading?<Loading2/>:<Link to={`/Dashboard/VerifyOrder/${items.idPedido}/${items.idUsuario}`}>
+                                        pedido.status === 'aceptada'?(
+                                            loading?<Loading2/>:<Link to={`/Dashboard/VerifyOrder/${pedido.idPedido}/${pedido.idUsuario}`}>
                                                 <img src={palometa} alt=""/>
                                             </Link>
-                                        ):items.status==='pagada'?(
+                                        ):pedido.status==='pagada'?(
                                             <img src={waiting} alt='esperando por administrador'/>
-                                        ):items.status==='abierta'?(
+                                        ):pedido.status==='abierta'?(
                                             <img src={waiting} alt='esperando '/>
                                             ):null
                                     }
                                     
                                     {
-                                        items.status !=='pagada'?(
+                                        pedido.status !=='pagada'?(
                                             loading?<Loading2/>:
                                             <Fragment>
                                                 <img onClick={showModal}
@@ -106,7 +108,7 @@ const PedidosCliente = (props)=>{
                                                 deletePedido={deletePedido}
                                                 sesionUser={typeUser}
 
-                                                idPedido={items.idPedido}
+                                                idPedido={pedido.idPedido}
                                                 status='cancelada'
                                                 
                                                 />:null} 
@@ -123,57 +125,57 @@ const PedidosCliente = (props)=>{
                             <div>
                                 <img src={enviado} alt=""/>
                                 <span>
-                                    <h3>Orden status: {items.status}</h3>
-                                    <p>Id de orden {items.idPedido}</p>
+                                    <h3>Orden status: {pedido.status}</h3>
+                                    <p>Id de orden {pedido.idPedido}</p>
                                 </span>
                             </div>
                             <article className="DatosDetalles">
                                 <div>
                                     <h2>Remitente</h2>
                                     <p>
-                                       <span>Tipo Moneda:</span> {items.monedaDeposito}
+                                       <span>Tipo Moneda:</span> {pedido.monedaDeposito}
                                         <br/>
-                                        <span>Nombres:</span> {items.nombre} {items.apellido}
+                                        <span>Nombres:</span> {pedido.nombre} {pedido.apellido}
                                         <br/>
-                                        <span>Doc. Identidad:</span> {items.dni}
+                                        <span>Doc. Identidad:</span> {pedido.dni}
                                         <br/>
-                                        <span>Correo:</span> {items.correo}
+                                        <span>Correo:</span> {pedido.correo}
                                         <br/>
-                                        <span>Refenecia Deposito:</span> {!items.referenciaDeposito?'Por Definir':items.referenciaDeposito}
+                                        <span>Refenecia Deposito:</span> {!pedido.referenciaDeposito?'Por Definir':pedido.referenciaDeposito}
                                     </p>
                                 </div>
                                 <img src={advertencia} alt=""/>
                                 <div>
-                                    <h2>{items.status==='abierta' || items.status === 'aceptada'?'Cuenta a depositar':'cuenta a recibir'}</h2>
+                                    <h2>{pedido.status==='abierta' || pedido.status === 'aceptada'?'Cuenta a depositar':'cuenta a recibir'}</h2>
                                     <p>
-                                       <span>Pais:</span> {items.paisBanco}
+                                       <span>Pais:</span> {pedido.paisBanco}
                                         <br/>
-                                        <span>Nombres:</span> {items.titular}
+                                        <span>Nombres:</span> {pedido.titular}
                                         <br/>
-                                        <span>Doc. Identidad:</span> {items.dniTitular}
+                                        <span>Doc. Identidad:</span> {pedido.dniTitular}
                                         <br/>
-                                        <span>Banco:</span> {items.banco}
+                                        <span>Banco:</span> {pedido.banco}
                                         <br/>
-                                        <span>Tipo de cuenta:</span>{items.tipoCuenta}
+                                        <span>Tipo de cuenta:</span>{pedido.tipoCuenta}
                                         <br/>
-                                        <span>Numero de cuenta:</span> {items.numeroCuenta}
+                                        <span>Numero de cuenta:</span> {pedido.numeroCuenta}
                                     </p>
                                 </div>
                                 <span>
                                    <p>
                                         monto: <span>
-                                            {items.montoDeposito} {items.monedaDeposito}
+                                            {pedido.montoDeposito} {pedido.monedaDeposito}
                                         </span>
                                     </p>
                                     <p>
                                         Tasa del dia: <span>
-                                           {items.tazaCambio}
+                                           {pedido.tazaCambio}
                                         </span>
                                        
                                     </p>
                                     <p>
                                      Operador: <span>
-                                        {!items.nombreOperador?' ':items.nombreOperador}
+                                        {!pedido.nombreOperador?' ':pedido.nombreOperador}
                                         </span>
                                         </p>
                                 </span>
@@ -182,19 +184,34 @@ const PedidosCliente = (props)=>{
                                    <p>
                                    referencia bancaria: <span>
                                    {
-                                    items.referenciaRetiro?items.referenciaRetiro:'por definir'
+                                    pedido.referenciaRetiro?pedido.referenciaRetiro:'por definir'
                                     }
                                         </span>
                                     </p>
                                     <p>
                                         total recibir: <span className="TotalDestino">
-                                            {items.montoRetiro} bsf
+                                            {pedido.montoRetiro} bsf
                                         </span>
                                     </p>                       
                                 </span>
                             </article>
+                            
                             <div className="Botones">
-                            <p className="btnBlue print" id={items.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p> 
+
+                            <PDFDownloadLink
+                            className="btnBlue"
+                            style={
+                                {
+                                    margin:'10px 5px 0px 0px',
+                                    fontSize:'14px'
+                                }
+                            }
+                            document={<Invoice pedido={pedido} />} fileName="pedido.pdf">
+                            {({ blob, url, loading, error }) =>
+                                loading ? 'Loading...' : 'Imprimir'
+                            }
+                            </PDFDownloadLink>
+
                             </div>
                             
                         </article>

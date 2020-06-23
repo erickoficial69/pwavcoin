@@ -11,6 +11,9 @@ import waiting from '../../svg/esperar.svg'
 import Loading2 from '../../components/loading/loading2'
 import CancelMessage from '../cancelMessage'
 
+import Invoice from '../../components/invoice'
+import {PDFDownloadLink} from '@react-pdf/renderer'
+
 const PedidosAdm = (props)=>{
     const [tabla, setTabla] = useState([{}])
     const [status,setStatus] = useState('abierta')
@@ -215,8 +218,21 @@ const PedidosAdm = (props)=>{
                         </span>
                     </article>
                     <div className="Botones">
-                    <p className="btnBlue print" id={pedido.idPedido} onClick={download}>{!loadPdf?'descargar':'espere'}</p>
-                    </div>
+                    <PDFDownloadLink
+                            className="btnBlue"
+                            style={
+                                {
+                                    margin:'10px 5px 0px 0px',
+                                    fontSize:'14px'
+                                }
+                            }
+                            document={<Invoice pedido={pedido} />} fileName="pedido.pdf">
+                            {({ blob, url, loading, error }) =>
+                                loading ? 'Loading...' : 'Imprimir'
+                            }
+                            </PDFDownloadLink>
+
+                            </div>
                     
                 </article>
                     </div>
