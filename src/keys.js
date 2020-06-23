@@ -1,7 +1,7 @@
 
 const servers={
-   devServer:process.env.BACKEND || 'http://localhost:4000', //https://vcointransfer.herokuapp.com
-   staticServer:process.env.STATIC || 'http://localhost:4000/static' //https://vcointransfer.herokuapp.com/static
+   devServer:process.env.NODE_ENV === 'production'? 'https://vcointransfer.herokuapp.com':'http://localhost:4000', 
+   staticServer:process.env.NODE_ENV === 'production'? 'https://vcointransfer.herokuapp.com/static/':'http://localhost:4000/static'
 }
 console.log(process.env.BACKEND)
 export {servers}
